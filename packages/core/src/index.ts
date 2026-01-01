@@ -1,5 +1,9 @@
 // ========================================
-// ZenKit UI Core - Phase 1 Components
+// ZenKit UI Core - Component Library
+// ========================================
+
+// ========================================
+// Phase 1 Components
 // ========================================
 
 // General
@@ -32,6 +36,42 @@ export * from './components/Modal';
 
 // Provider
 export * from './components/Provider';
+
+// ========================================
+// Phase 2 Components
+// ========================================
+
+// Navigation
+export * from './components/Tabs';
+export * from './components/Pagination';
+export * from './components/Breadcrumb';
+export * from './components/Menu';
+export * from './components/Steps';
+
+// Overlay
+export * from './components/Dropdown';
+export * from './components/Tooltip';
+export * from './components/Popover';
+export * from './components/Drawer';
+
+// Feedback
+export * from './components/Progress';
+export * from './components/Spinner';
+export * from './components/Notification';
+
+// Data Display
+export * from './components/Avatar';
+export * from './components/Badge';
+export * from './components/Tag';
+export * from './components/Collapse';
+export * from './components/Divider';
+
+// Form
+export * from './components/Slider';
+
+// ========================================
+// Types & Utils
+// ========================================
 
 // Types
 export * from './types';

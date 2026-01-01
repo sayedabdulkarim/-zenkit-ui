@@ -70,6 +70,29 @@ export * from './components/Divider';
 export * from './components/Slider';
 
 // ========================================
+// Phase 3 Components
+// ========================================
+
+// Data Display
+export * from './components/Table';
+export * from './components/List';
+export * from './components/Descriptions';
+export * from './components/Timeline';
+export * from './components/Statistic';
+export * from './components/Empty';
+export * from './components/Image';
+
+// Feedback
+export * from './components/Result';
+export * from './components/Skeleton';
+
+// Form
+export * from './components/Rate';
+
+// Navigation
+export * from './components/BackTop';
+
+// ========================================
 // Types & Utils
 // ========================================
 

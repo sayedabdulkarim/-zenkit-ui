@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# ZenKit UI
+
+Welcome to **ZenKit UI** - A modern React component library built on ZenKit CSS.
+
+## Features
+
+- **Zero-runtime CSS** - Built on ZenKit CSS for optimal performance
+- **Fully typed** - Written in TypeScript with complete type definitions
+- **Accessible** - WCAG 2.1 AA compliant components
+- **Customizable** - CSS Variables for easy theming
+- **Tree-shakeable** - Import only what you need
+
+## Installation
+
+```bash
+npm install @zenkit-ui/core zenkit-css
+# or
+pnpm add @zenkit-ui/core zenkit-css
+```
+
+## Quick Start
+
+```tsx
+// Import ZenKit CSS in your app's entry point
+import 'zenkit-css/dist/zenkit.css';
+
+// Use components
+import { Button } from '@zenkit-ui/core';
+
+function App() {
+  return (
+    <Button variant="solid" colorScheme="primary">
+      Click me
+    </Button>
+  );
+}
+```
+
+## Packages
+
+### @zenkit-ui/core
+
+Core components like Button, Card, Input, Modal, etc.
+
+### @zenkit-ui/hooks
+
+Reusable React hooks for building accessible UI components:
+
+- `useDisclosure` - Modal/dropdown open/close state
+- `useClickOutside` - Click outside detection
+- `useFocusTrap` - Keyboard focus trapping
+- `useControllable` - Controlled/uncontrolled component state
+- `useMediaQuery` - Responsive breakpoint detection
+- `useKeyboard` - Keyboard event handling
+
+## Component Status
+
+| Component | Status |
+|-----------|--------|
+| Button | ✅ Ready |
+| More... | 🚧 Coming Soon |
+
+## Resources
+
+- [GitHub Repository](https://github.com/sayedabdulkarim/zenkit-ui)
+- [ZenKit CSS](https://github.com/sayedabdulkarim/zenkit-css)

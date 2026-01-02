@@ -170,3 +170,60 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 );
 
 CheckboxGroup.displayName = 'CheckboxGroup';
+
+// CheckboxGroupItem component for compound usage
+export interface CheckboxGroupItemProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> {
+  /** Item value */
+  value: string;
+  /** Item label */
+  label?: React.ReactNode;
+  /** Item description */
+  description?: React.ReactNode;
+}
+
+export const CheckboxGroupItem = forwardRef<HTMLInputElement, CheckboxGroupItemProps>(
+  ({ className, value, label, description, disabled, ...props }, ref) => {
+    const context = useCheckboxGroup();
+
+    if (!context) {
+      throw new Error('CheckboxGroupItem must be used within a CheckboxGroup');
+    }
+
+    const isChecked = context.value.includes(value);
+    const isDisabled = disabled || context.disabled;
+
+    return (
+      <label
+        className={cn(
+          'zk-checkbox-group__item',
+          isChecked && 'zk-checkbox-group__item--checked',
+          isDisabled && 'zk-checkbox-group__item--disabled',
+          className
+        )}
+      >
+        <input
+          ref={ref}
+          type="checkbox"
+          name={context.name}
+          value={value}
+          checked={isChecked}
+          onChange={() => context.onChange(value)}
+          disabled={isDisabled}
+          className="zk-checkbox-group__input"
+          {...props}
+        />
+        <span className="zk-checkbox-group__checkbox">
+          {isChecked && '✓'}
+        </span>
+        {(label || description) && (
+          <span className="zk-checkbox-group__content">
+            {label && <span className="zk-checkbox-group__label">{label}</span>}
+            {description && <span className="zk-checkbox-group__description">{description}</span>}
+          </span>
+        )}
+      </label>
+    );
+  }
+);
+
+CheckboxGroupItem.displayName = 'CheckboxGroupItem';

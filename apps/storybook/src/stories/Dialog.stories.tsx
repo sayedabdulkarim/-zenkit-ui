@@ -22,7 +22,7 @@ const DialogExample = () => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open Dialog</Button>
-      <Dialog open={open} onClose={() => setOpen(false)}>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogHeader>Dialog Title</DialogHeader>
         <DialogBody>
           <p>This is the dialog content. You can put any content here.</p>
@@ -51,7 +51,7 @@ const SizesExample = () => {
         <Button onClick={() => setSize('xl')}>Extra Large</Button>
       </div>
       {size && (
-        <Dialog open={true} onClose={() => setSize(null)} size={size}>
+        <Dialog open={true} onOpenChange={() => setSize(null)} size={size}>
           <DialogHeader>{size.toUpperCase()} Dialog</DialogHeader>
           <DialogBody>
             <p>This is a {size} sized dialog.</p>
@@ -74,7 +74,7 @@ const ScrollableExample = () => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open Scrollable Dialog</Button>
-      <Dialog open={open} onClose={() => setOpen(false)}>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogHeader>Scrollable Content</DialogHeader>
         <DialogBody>
           {Array.from({ length: 20 }).map((_, i) => (

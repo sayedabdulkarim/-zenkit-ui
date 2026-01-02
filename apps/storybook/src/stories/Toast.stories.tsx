@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Toast, useToast, Button } from '@zenkit-ui/core';
+import { useState } from 'react';
+import { Toast, Button } from '@zenkit-ui/core';
 
 const meta: Meta<typeof Toast> = {
   title: 'Components/Toast',
@@ -55,24 +56,34 @@ export const Closable: Story = {
   },
 };
 
-const ToastHookExample = () => {
-  const { addToast } = useToast();
+const InteractiveToast = () => {
+  const [toasts, setToasts] = useState<Array<{ id: number; title: string; message: string; variant: 'info' | 'success' | 'warning' | 'error' }>>([]);
+  let idCounter = 0;
+
+  const addToast = (title: string, message: string, variant: 'info' | 'success' | 'warning' | 'error') => {
+    const id = ++idCounter;
+    setToasts((prev) => [...prev, { id, title, message, variant }]);
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, 3000);
+  };
 
   return (
-    <div style={{ display: 'flex', gap: '0.5rem' }}>
-      <Button onClick={() => addToast({ title: 'Info', message: 'Info toast', variant: 'info' })}>
-        Info Toast
-      </Button>
-      <Button onClick={() => addToast({ title: 'Success', message: 'Success toast', variant: 'success' })}>
-        Success Toast
-      </Button>
-      <Button onClick={() => addToast({ title: 'Error', message: 'Error toast', variant: 'error' })}>
-        Error Toast
-      </Button>
+    <div>
+      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+        <Button onClick={() => addToast('Info', 'Info toast message', 'info')}>Info Toast</Button>
+        <Button onClick={() => addToast('Success', 'Success toast message', 'success')}>Success Toast</Button>
+        <Button onClick={() => addToast('Error', 'Error toast message', 'error')}>Error Toast</Button>
+      </div>
+      <div style={{ position: 'fixed', top: '1rem', right: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        {toasts.map((toast) => (
+          <Toast key={toast.id} title={toast.title} message={toast.message} variant={toast.variant} isOpen />
+        ))}
+      </div>
     </div>
   );
 };
 
-export const WithHook: Story = {
-  render: () => <ToastHookExample />,
+export const Interactive: Story = {
+  render: () => <InteractiveToast />,
 };

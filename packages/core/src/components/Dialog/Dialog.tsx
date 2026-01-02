@@ -133,6 +133,16 @@ export const DialogHeader = forwardRef<HTMLDivElement, DialogHeaderProps>(
 
 DialogHeader.displayName = 'DialogHeader';
 
+export interface DialogBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export const DialogBody = forwardRef<HTMLDivElement, DialogBodyProps>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn('zk-dialog__body', className)} {...props} />
+  )
+);
+
+DialogBody.displayName = 'DialogBody';
+
 export interface DialogFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const DialogFooter = forwardRef<HTMLDivElement, DialogFooterProps>(

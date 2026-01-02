@@ -228,6 +228,33 @@ export * from './components/ColorSwatch';
 export * from './components/ThemeIcon';
 
 // ========================================
+// Phase 6 Components
+// ========================================
+
+// Phase 6A - Must Add (Date/Time & Selection)
+export * from './components/DateTimePicker';
+export * from './components/MonthPicker';
+export * from './components/YearPicker';
+export * from './components/RadioCard';
+export * from './components/Toolbar';
+export * from './components/SimpleGrid';
+export * from './components/Blockquote';
+
+// Phase 6B - Should Add (Performance & Utilities)
+export * from './components/VirtualList';
+export * from './components/InfiniteScroll';
+export * from './components/SplitButton';
+export * from './components/NumberFormatter';
+export * from './components/Sortable';
+export * from './components/ErrorBoundary';
+
+// Phase 6C - Enterprise (Advanced)
+export * from './components/RichTextEditor';
+export * from './components/Sparkline';
+export * from './components/Gauge';
+export * from './components/LazyLoad';
+
+// ========================================
 // Types & Utils
 // ========================================
 

@@ -48,8 +48,8 @@ export const AppBar = forwardRef<HTMLElement, AppBarProps>(
 
 AppBar.displayName = 'AppBar';
 
-// Toolbar component for AppBar content
-export interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
+// AppBarToolbar component for AppBar content layout
+export interface AppBarToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Whether toolbar content should be centered */
   centered?: boolean;
   /** Whether the toolbar is dense */
@@ -58,15 +58,15 @@ export interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
   disableGutters?: boolean;
 }
 
-export const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(
+export const AppBarToolbar = forwardRef<HTMLDivElement, AppBarToolbarProps>(
   ({ className, centered, dense, disableGutters, ...props }, ref) => (
     <div
       ref={ref}
       className={cn(
-        'zk-toolbar',
-        centered && 'zk-toolbar--centered',
-        dense && 'zk-toolbar--dense',
-        disableGutters && 'zk-toolbar--no-gutters',
+        'zk-app-bar-toolbar',
+        centered && 'zk-app-bar-toolbar--centered',
+        dense && 'zk-app-bar-toolbar--dense',
+        disableGutters && 'zk-app-bar-toolbar--no-gutters',
         className
       )}
       {...props}
@@ -74,4 +74,4 @@ export const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(
   )
 );
 
-Toolbar.displayName = 'Toolbar';
+AppBarToolbar.displayName = 'AppBarToolbar';

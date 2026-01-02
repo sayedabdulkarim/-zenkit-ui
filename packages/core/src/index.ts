@@ -175,6 +175,59 @@ export * from './components/FloatButton';
 export * from './components/Resizable';
 
 // ========================================
+// Phase 5 Components
+// ========================================
+
+// Phase 5A - Core Primitives
+export * from './components/Toast';
+export * from './components/Dialog';
+export * from './components/Label';
+export * from './components/Separator';
+export * from './components/Heading';
+export * from './components/Text';
+export * from './components/Box';
+export * from './components/Center';
+
+// Phase 5B - Form Enhancements
+export * from './components/FileInput';
+export * from './components/RangeSlider';
+export * from './components/MultiSelect';
+export * from './components/Combobox';
+export * from './components/ColorInput';
+export * from './components/CopyButton';
+export * from './components/CheckboxGroup';
+
+// Phase 5C - Layout & Feedback
+export * from './components/AppShell';
+export * from './components/AppBar';
+export * from './components/Paper';
+export * from './components/Backdrop';
+export * from './components/LoadingOverlay';
+export * from './components/RingProgress';
+
+// Phase 5D - Utilities & Accessibility
+export * from './components/VisuallyHidden';
+export * from './components/FocusTrap';
+export * from './components/Highlight';
+export * from './components/Indicator';
+export * from './components/Spoiler';
+
+// Phase 5E - Advanced
+export * from './components/Stepper';
+export * from './components/NavLink';
+export * from './components/Chart';
+
+// Phase 5F - Specialized
+export * from './components/JsonInput';
+export * from './components/AngleSlider';
+export * from './components/TableOfContents';
+export * from './components/SemiCircleProgress';
+export * from './components/CheckboxCard';
+export * from './components/ScrollShadow';
+export * from './components/ColorSwatch';
+export * from './components/ThemeIcon';
+
+// ========================================
 // Types & Utils
 // ========================================
 

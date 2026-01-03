@@ -255,6 +255,58 @@ export * from './components/Gauge';
 export * from './components/LazyLoad';
 
 // ========================================
+// Phase 7 Components - Library Parity
+// ========================================
+
+// Layout Primitives
+export * from './components/Group';
+export * from './components/Float';
+export * from './components/Overlay';
+
+// Button Variants
+export * from './components/ActionIcon';
+export * from './components/UnstyledButton';
+export * from './components/FileButton';
+export * from './components/FloatingIndicator';
+
+// Form Components
+export * from './components/Pill';
+export * from './components/Mark';
+
+// Data Display
+export * from './components/User';
+export * from './components/DataList';
+export * from './components/BackgroundImage';
+
+// Accessibility
+export * from './components/SkipNavLink';
+
+// ========================================
+// Phase 8 Components - 100% Library Coverage
+// ========================================
+
+// Layout
+export * from './components/AbsoluteCenter';
+
+// Form Components
+export * from './components/PillsInput';
+
+// Navigation
+export * from './components/Burger';
+export * from './components/Listbox';
+
+// Interactive
+export * from './components/LinkOverlay';
+export * from './components/Toggletip';
+export * from './components/Disclosure';
+
+// Date/Time
+export * from './components/RangeCalendar';
+
+// Utilities
+export * from './components/ClientOnly';
+
+// ========================================
 // Types & Utils
 // ========================================
 

@@ -1,0 +1,91 @@
+/* Fix code block text visibility in Storybook docs */
+.docblock-source code,
+.docblock-source pre,
+.docs-story code,
+.sbdocs-content code,
+.sbdocs code,
+pre.prismjs,
+.prismjs code,
+.docblock-source .token {
+  color: inherit !important;
+}
+
+/* Ensure syntax highlighting works */
+.docblock-source .token.tag,
+.docblock-source .token.attr-name,
+.docblock-source .token.attr-value {
+  color: #e06c75 !important;
+}
+
+.docblock-source .token.string {
+  color: #98c379 !important;
+}
+
+.docblock-source .token.punctuation {
+  color: #abb2bf !important;
+}
+
+/* Don't apply zenkit typography to Storybook UI */
+.sb-show-main,
+.sbdocs,
+.docs-story {
+  font-family: inherit;
+}
+
+/* Fix any conflicting zenkit styles */
+.sbdocs-wrapper code,
+.sbdocs-content code {
+  background: transparent;
+  padding: 0;
+}
+
+/* ========================================
+   Dark Mode for Storybook Docs Page
+   ======================================== */
+[data-theme="dark"] .sbdocs-wrapper,
+[data-theme="dark"] .sbdocs,
+[data-theme="dark"] .sbdocs-content {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .sbdocs h1,
+[data-theme="dark"] .sbdocs h2,
+[data-theme="dark"] .sbdocs h3,
+[data-theme="dark"] .sbdocs h4,
+[data-theme="dark"] .sbdocs p,
+[data-theme="dark"] .sbdocs span,
+[data-theme="dark"] .sbdocs label,
+[data-theme="dark"] .sbdocs td,
+[data-theme="dark"] .sbdocs th {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .docblock-argstable,
+[data-theme="dark"] .docblock-argstable-body,
+[data-theme="dark"] .docblock-argstable-row {
+  background-color: #2a2a2a !important;
+}
+
+[data-theme="dark"] .docblock-argstable th,
+[data-theme="dark"] .docblock-argstable td {
+  border-color: #444 !important;
+  background-color: #2a2a2a !important;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: #333 !important;
+  color: #fff !important;
+  border-color: #555 !important;
+}
+
+[data-theme="dark"] .docs-story {
+  background-color: #1a1a1a !important;
+}
+
+/* Canvas/Preview area in docs */
+[data-theme="dark"] .sb-unstyled {
+  background-color: #1a1a1a !important;
+}

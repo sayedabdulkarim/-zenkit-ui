@@ -1,22 +1,34 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  // Load only essential stories for faster dev
+  stories: [
+    '../src/stories/Introduction.mdx',
+    '../src/stories/Button.stories.tsx',
+    '../src/stories/Alert.stories.tsx',
+    '../src/stories/Card.stories.tsx',
+    '../src/stories/Input.stories.tsx',
+    '../src/stories/Modal.stories.tsx',
+    '../src/stories/Badge.stories.tsx',
+    '../src/stories/Avatar.stories.tsx',
+    '../src/stories/Tabs.stories.tsx',
+    '../src/stories/Dropdown.stories.tsx',
+    '../src/stories/Table.stories.tsx',
+  ],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
     '@storybook/addon-a11y',
   ],
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
+    reactDocgen: false,
+  },
+  core: {
+    disableTelemetry: true,
   },
 };
 

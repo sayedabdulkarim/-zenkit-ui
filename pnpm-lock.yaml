@@ -45,6 +45,12 @@ importers:
         specifier: ^1.4.1
         version: 1.4.1
     devDependencies:
+      '@babel/parser':
+        specifier: ^7.28.5
+        version: 7.28.5
+      '@babel/standalone':
+        specifier: ^7.28.5
+        version: 7.28.5
       '@storybook/addon-a11y':
         specifier: ^8.6.15
         version: 8.6.15(storybook@8.6.15)
@@ -69,6 +75,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.0
         version: 18.3.7(@types/react@18.3.27)
+      prettier:
+        specifier: ^3.1.0
+        version: 3.7.4
       storybook:
         specifier: ^8.6.15
         version: 8.6.15(prettier@3.7.4)
@@ -339,6 +348,11 @@ packages:
 
   /@babel/runtime@7.28.4:
     resolution: {integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ==}
+    engines: {node: '>=6.9.0'}
+    dev: true
+
+  /@babel/standalone@7.28.5:
+    resolution: {integrity: sha512-1DViPYJpRU50irpGMfLBQ9B4kyfQuL6X7SS7pwTeWeZX0mNkjzPi0XFqxCjSdddZXUQy4AhnQnnesA/ZHnvAdw==}
     engines: {node: '>=6.9.0'}
     dev: true
 

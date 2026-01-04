@@ -181,10 +181,6 @@ const preview: Preview = {
     },
     docs: {
       container: ThemedDocsContainer,
-      source: {
-        format: 'dedent',
-        language: 'tsx',
-      },
     },
   },
   globalTypes: {

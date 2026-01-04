@@ -192,26 +192,40 @@ body[data-theme="dark"] .sbdocs-wrapper button:not(.btn),
 [data-theme="dark"] .sbdocs,
 [data-theme="dark"] .sbdocs-content {
   background-color: #1a1a1a !important;
-  color: #ffffff !important;
+  /* Removed color: #ffffff - it was overriding component text colors */
 }
 
-[data-theme="dark"] .sbdocs h1,
-[data-theme="dark"] .sbdocs h2,
-[data-theme="dark"] .sbdocs h3,
-[data-theme="dark"] .sbdocs h4,
-[data-theme="dark"] .sbdocs p,
-[data-theme="dark"] .sbdocs span:not([class*="token"]),
-[data-theme="dark"] .sbdocs label,
-[data-theme="dark"] .sbdocs td,
-[data-theme="dark"] .sbdocs th,
-[data-theme="dark"] .sbdocs li,
-[data-theme="dark"] .sbdocs ul,
-[data-theme="dark"] .sbdocs ol,
-[data-theme="dark"] .sbdocs-content li,
-[data-theme="dark"] .sbdocs-content ul,
-[data-theme="dark"] .sbdocs-content p,
-[data-theme="dark"] .sbdocs-wrapper li,
-[data-theme="dark"] .sbdocs-wrapper p {
+/* Reset component preview area - DON'T override component text colors */
+[data-theme="dark"] .docs-story *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6),
+[data-theme="dark"] .sb-story *,
+[data-theme="dark"] .sb-unstyled *:not(button) {
+  color: initial;
+}
+
+/* But keep the preview container background dark */
+[data-theme="dark"] .docs-story,
+[data-theme="dark"] [class*="Preview"],
+[data-theme="dark"] [class*="Canvas"] {
+  background-color: #1a1a1a !important;
+}
+
+/* Dark mode text - only for docs content, NOT component preview */
+[data-theme="dark"] .sbdocs > h1,
+[data-theme="dark"] .sbdocs > h2,
+[data-theme="dark"] .sbdocs > h3,
+[data-theme="dark"] .sbdocs > h4,
+[data-theme="dark"] .sbdocs > p,
+[data-theme="dark"] .sbdocs-content > h1,
+[data-theme="dark"] .sbdocs-content > h2,
+[data-theme="dark"] .sbdocs-content > h3,
+[data-theme="dark"] .sbdocs-content > h4,
+[data-theme="dark"] .sbdocs-content > p,
+[data-theme="dark"] .sbdocs-content > ul,
+[data-theme="dark"] .sbdocs-content > ol,
+[data-theme="dark"] .sbdocs-content > ul > li,
+[data-theme="dark"] .sbdocs-content > ol > li,
+[data-theme="dark"] .docblock-argstable td,
+[data-theme="dark"] .docblock-argstable th {
   color: #ffffff !important;
 }
 
@@ -222,23 +236,10 @@ body[data-theme="dark"] .sbdocs-wrapper button:not(.btn),
   color: #cccccc !important;
 }
 
-/* Nuclear fix - all text in docs dark mode (excluding component preview) */
-[data-theme="dark"] .sbdocs-wrapper > *:not(.docs-story):not([class*="Preview"]):not([class*="Canvas"]),
-[data-theme="dark"] .sbdocs-content > h1,
-[data-theme="dark"] .sbdocs-content > h2,
-[data-theme="dark"] .sbdocs-content > h3,
-[data-theme="dark"] .sbdocs-content > h4,
-[data-theme="dark"] .sbdocs-content > p,
-[data-theme="dark"] .sbdocs-content > ul,
-[data-theme="dark"] .sbdocs-content > ol,
-[data-theme="dark"] .sbdocs-content > li {
-  color: #ffffff !important;
-}
+/* Text selectors moved to more specific section above */
 
 /* Fix MDX content specifically - but NOT component styles */
-[data-theme="dark"] .sbdocs-wrapper .sb-unstyled {
-  color: #ffffff !important;
-}
+/* Removed .sb-unstyled color override - it was affecting component internals */
 /* Don't override component internal colors */
 
 [data-theme="dark"] .docblock-argstable,

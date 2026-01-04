@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { VirtualList } from '@zenkit-ui/core';
-import type { CSSProperties } from 'react';
 
 const meta: Meta<typeof VirtualList> = {
   title: 'Data Display/VirtualList',
@@ -31,10 +30,10 @@ export const Default: Story = {
         height={400}
         width={400}
         itemHeight={50}
-        renderItem={(item, index, style) => (
+        renderItem={(item, index) => (
           <div
             style={{
-              ...style,
+              height: '100%',
               display: 'flex',
               alignItems: 'center',
               padding: '0 16px',
@@ -60,10 +59,10 @@ export const VariableHeight: Story = {
         height={400}
         width={400}
         itemHeight={(index) => (index % 3 === 0 ? 80 : 50)}
-        renderItem={(item, index, style) => (
+        renderItem={(item, index) => (
           <div
             style={{
-              ...style,
+              height: '100%',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -90,44 +89,48 @@ export const WithGap: Story = {
   render: () => {
     const items = generateItems(100);
     return (
-      <VirtualList
-        data={items}
-        height={400}
-        width={400}
-        itemHeight={60}
-        gap={8}
-        renderItem={(item, index, style) => (
-          <div
-            style={{
-              ...style,
-              display: 'flex',
-              alignItems: 'center',
-              padding: '0 16px',
-              background: '#fff',
-              borderRadius: '8px',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-            }}
-          >
+      <div style={{ padding: '8px', background: '#f1f5f9', borderRadius: '8px' }}>
+        <VirtualList
+          data={items}
+          height={384}
+          width={384}
+          itemHeight={56}
+          gap={8}
+          renderItem={(item, index) => (
             <div
               style={{
-                width: 40,
-                height: 40,
-                borderRadius: '50%',
-                background: '#e2e8f0',
+                height: '100%',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: 12,
+                padding: '0 16px',
+                background: '#fff',
+                borderRadius: '8px',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
               }}
             >
-              {item.id}
+              <div
+                style={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: '50%',
+                  background: '#3b82f6',
+                  color: '#fff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginRight: 12,
+                  fontWeight: 600,
+                  fontSize: '14px',
+                }}
+              >
+                {item.id}
+              </div>
+              <span style={{ fontWeight: 500 }}>{item.name}</span>
             </div>
-            <span style={{ fontWeight: 500 }}>{item.name}</span>
-          </div>
-        )}
-        getKey={(item) => item.id}
-        style={{ padding: '8px', background: '#f1f5f9' }}
-      />
+          )}
+          getKey={(item) => item.id}
+        />
+      </div>
     );
   },
 };
@@ -181,10 +184,10 @@ export const LargeDataset: Story = {
           height={400}
           width={500}
           itemHeight={40}
-          renderItem={(item, index, style) => (
+          renderItem={(item, index) => (
             <div
               style={{
-                ...style,
+                height: '100%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -216,10 +219,10 @@ export const CustomOverscan: Story = {
         width={400}
         itemHeight={50}
         overscan={10}
-        renderItem={(item, index, style) => (
+        renderItem={(item, index) => (
           <div
             style={{
-              ...style,
+              height: '100%',
               display: 'flex',
               alignItems: 'center',
               padding: '0 16px',

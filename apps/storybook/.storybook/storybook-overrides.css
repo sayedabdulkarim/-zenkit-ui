@@ -1,0 +1,889 @@
+/* ========================================
+   Storybook Dark Theme Detection
+   ======================================== */
+
+/* When Storybook dark theme is active via themes.dark */
+.sb-show-main.sb-main-padded[data-theme="dark"],
+.sbdocs.sbdocs-wrapper[data-theme="dark"],
+body.sb-show-main[data-theme="dark"],
+html[data-theme="dark"] .sbdocs,
+html[data-theme="dark"] .sbdocs-wrapper,
+html[data-theme="dark"] .sbdocs-content,
+body[data-theme="dark"] .sbdocs,
+body[data-theme="dark"] .sbdocs-wrapper,
+body[data-theme="dark"] .sbdocs-content {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+}
+
+/* Target Storybook's dark theme class */
+.docs-story[data-theme="dark"],
+[data-theme="dark"] .docs-story {
+  background-color: #1a1a1a !important;
+}
+
+/* ========================================
+   Fix Code Block Styling (remove zenkit conflicts)
+   ======================================== */
+
+/* Add padding to code block container */
+.docblock-source {
+  padding: 0 !important;
+}
+
+.docblock-source pre {
+  padding: 1rem !important;
+  margin: 0 !important;
+}
+
+/* Target the actual code content for left padding */
+.docblock-source pre code {
+  padding-left: 0.5rem !important;
+  display: block !important;
+}
+
+/* More specific selectors for Storybook code blocks */
+div[class*="docblock-source"] pre,
+.sb-unstyled pre,
+.docs-story pre {
+  padding: 1rem !important;
+}
+
+/* Storybook Source component - targets the actual code wrapper */
+[class*="css-"][class*="Source"] pre,
+[id*="story"] pre,
+.sbdocs-preview pre {
+  padding: 1rem !important;
+}
+
+/* Nuclear option - all pre tags in docs */
+.sbdocs pre,
+.sbdocs-wrapper pre,
+.sbdocs-content pre {
+  padding: 1rem !important;
+}
+
+/* Prism.js specific - Storybook uses this for syntax highlighting */
+pre.prismjs,
+pre[class*="language-"] {
+  padding: 1rem !important;
+}
+
+pre.prismjs code,
+pre[class*="language-"] code {
+  padding-left: 0 !important;
+}
+
+/* Reset ALL code/pre elements in Storybook docs to remove zenkit styles */
+.docblock-source code,
+.docblock-source span,
+.docs-story code,
+.sbdocs-content code,
+.sbdocs code,
+pre.prismjs,
+.prismjs code,
+.prismjs span,
+.docblock-source .token,
+[class*="docblock"] code,
+[class*="docblock"] span {
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Proper syntax highlighting colors */
+.docblock-source .token.tag,
+.prismjs .token.tag {
+  color: #e06c75 !important;
+}
+
+.docblock-source .token.attr-name,
+.prismjs .token.attr-name {
+  color: #d19a66 !important;
+}
+
+.docblock-source .token.attr-value,
+.docblock-source .token.string,
+.prismjs .token.attr-value,
+.prismjs .token.string {
+  color: #98c379 !important;
+}
+
+.docblock-source .token.punctuation,
+.prismjs .token.punctuation {
+  color: #abb2bf !important;
+}
+
+.docblock-source .token.keyword,
+.prismjs .token.keyword {
+  color: #c678dd !important;
+}
+
+.docblock-source .token.function,
+.prismjs .token.function {
+  color: #61afef !important;
+}
+
+.docblock-source .token.operator,
+.prismjs .token.operator {
+  color: #56b6c2 !important;
+}
+
+.docblock-source .token.plain-text,
+.prismjs .token.plain-text {
+  color: #abb2bf !important;
+}
+
+/* Don't apply zenkit typography to Storybook UI */
+.sb-show-main,
+.sbdocs,
+.docs-story {
+  font-family: inherit;
+}
+
+/* Prevent zenkit button styles from applying to Storybook controls */
+/* Exclude component buttons like .float-button, .btn, etc. */
+.sbdocs button:not(.btn):not(.float-button):not([class*="float-button"]),
+.sbdocs-wrapper button:not(.btn):not(.float-button):not([class*="float-button"]),
+[class*="argstable"] button:not(.float-button):not([class*="float-button"]),
+[class*="ArgTable"] button:not(.float-button):not([class*="float-button"]),
+[class*="Control"] button:not(.btn):not(.float-button):not([class*="float-button"]),
+table button:not(.btn):not(.float-button):not([class*="float-button"]) {
+  all: revert !important;
+  font-family: inherit !important;
+}
+
+/* Then re-apply our styles */
+.sbdocs button:not(.btn):not(.float-button):not([class*="float-button"]),
+[class*="Control"] button:not(.btn):not(.float-button):not([class*="float-button"]) {
+  padding: 4px 12px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  border-radius: 4px !important;
+}
+
+/* Dark mode button styles - MUST come after revert */
+/* Exclude component buttons */
+html[data-theme="dark"] .sbdocs button:not(.btn):not(.float-button):not([class*="float-button"]),
+html[data-theme="dark"] .sbdocs-wrapper button:not(.btn):not(.float-button):not([class*="float-button"]),
+body[data-theme="dark"] .sbdocs button:not(.btn):not(.float-button):not([class*="float-button"]),
+body[data-theme="dark"] .sbdocs-wrapper button:not(.btn):not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] .sbdocs button:not(.btn):not(.float-button):not([class*="float-button"]) {
+  background-color: #444 !important;
+  color: #fff !important;
+  border: 1px solid #666 !important;
+}
+
+/* Fix inline code in docs */
+.sbdocs-wrapper code,
+.sbdocs-content code,
+.sbdocs p code,
+.sbdocs td code {
+  background: rgba(0,0,0,0.05) !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+}
+
+/* ========================================
+   Dark Mode for Storybook Docs Page
+   ======================================== */
+[data-theme="dark"] .sbdocs-wrapper,
+[data-theme="dark"] .sbdocs,
+[data-theme="dark"] .sbdocs-content {
+  background-color: #1a1a1a !important;
+  /* Removed color: #ffffff - it was overriding component text colors */
+}
+
+/* Reset component preview area - DON'T override component text colors */
+[data-theme="dark"] .docs-story *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6),
+[data-theme="dark"] .sb-story *,
+[data-theme="dark"] .sb-unstyled *:not(button) {
+  color: initial;
+}
+
+/* But keep the preview container background dark */
+[data-theme="dark"] .docs-story,
+[data-theme="dark"] [class*="Preview"],
+[data-theme="dark"] [class*="Canvas"] {
+  background-color: #1a1a1a !important;
+}
+
+/* Dark mode text - only for docs content, NOT component preview */
+[data-theme="dark"] .sbdocs > h1,
+[data-theme="dark"] .sbdocs > h2,
+[data-theme="dark"] .sbdocs > h3,
+[data-theme="dark"] .sbdocs > h4,
+[data-theme="dark"] .sbdocs > p,
+[data-theme="dark"] .sbdocs-content > h1,
+[data-theme="dark"] .sbdocs-content > h2,
+[data-theme="dark"] .sbdocs-content > h3,
+[data-theme="dark"] .sbdocs-content > h4,
+[data-theme="dark"] .sbdocs-content > p,
+[data-theme="dark"] .sbdocs-content > ul,
+[data-theme="dark"] .sbdocs-content > ol,
+[data-theme="dark"] .sbdocs-content > ul > li,
+[data-theme="dark"] .sbdocs-content > ol > li,
+[data-theme="dark"] .docblock-argstable td,
+[data-theme="dark"] .docblock-argstable th {
+  color: #ffffff !important;
+}
+
+/* Fix muted/secondary text in dark mode */
+[data-theme="dark"] .sbdocs [class*="muted"],
+[data-theme="dark"] .sbdocs [class*="secondary"],
+[data-theme="dark"] .sbdocs-content [class*="muted"] {
+  color: #cccccc !important;
+}
+
+/* Text selectors moved to more specific section above */
+
+/* Fix MDX content specifically - but NOT component styles */
+/* Removed .sb-unstyled color override - it was affecting component internals */
+/* Don't override component internal colors */
+
+[data-theme="dark"] .docblock-argstable,
+[data-theme="dark"] .docblock-argstable-body,
+[data-theme="dark"] .docblock-argstable-row {
+  background-color: #2a2a2a !important;
+}
+
+[data-theme="dark"] .docblock-argstable th,
+[data-theme="dark"] .docblock-argstable td {
+  border-color: #444 !important;
+  background-color: #2a2a2a !important;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: #333 !important;
+  color: #fff !important;
+  border-color: #555 !important;
+}
+
+[data-theme="dark"] .docs-story {
+  background-color: #1a1a1a !important;
+}
+
+[data-theme="dark"] .sb-unstyled {
+  background-color: #1a1a1a !important;
+}
+
+/* Dark mode inline code */
+[data-theme="dark"] .sbdocs-wrapper code,
+[data-theme="dark"] .sbdocs-content code,
+[data-theme="dark"] .sbdocs p code,
+[data-theme="dark"] .sbdocs td code,
+[data-theme="dark"] .sbdocs li code,
+[data-theme="dark"] code:not([class*="language-"]):not([class*="token"]) {
+  background: rgba(255,255,255,0.15) !important;
+  color: #f8f8f2 !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+}
+
+/* Copy button in dark mode - only target Storybook UI buttons, not component buttons */
+[data-theme="dark"] [class*="Source"] button:not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] [class*="docblock"] button:not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] [class*="Toolbar"] button:not(.float-button):not([class*="float-button"]) {
+  background-color: #333 !important;
+  color: #ffffff !important;
+  border: 1px solid #555 !important;
+}
+
+/* ========================================
+   Dark Mode for Story Preview Container
+   ======================================== */
+
+/* Story preview container - the white box around component */
+[data-theme="dark"] .sbdocs-preview,
+[data-theme="dark"] [class*="Preview"],
+[data-theme="dark"] [class*="preview"] {
+  background-color: #2a2a2a !important;
+  border-color: #444 !important;
+}
+
+/* The inner story area */
+[data-theme="dark"] .sb-story,
+[data-theme="dark"] [class*="Story"],
+[data-theme="dark"] .docs-story > div {
+  background-color: #1a1a1a !important;
+}
+
+/* Toolbar area with zoom icons and Show code button */
+[data-theme="dark"] [class*="Toolbar"],
+[data-theme="dark"] [class*="toolbar"] {
+  background-color: #2a2a2a !important;
+  border-color: #444 !important;
+}
+
+/* Show code button and other toolbar buttons - exclude component buttons */
+[data-theme="dark"] [class*="Toolbar"] button:not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] [class*="toolbar"] button:not(.float-button):not([class*="float-button"]) {
+  background-color: #333 !important;
+  color: #fff !important;
+  border-color: #555 !important;
+}
+
+[data-theme="dark"] [class*="Toolbar"] button:not(.float-button):hover,
+[data-theme="dark"] [class*="toolbar"] button:not(.float-button):hover {
+  background-color: #444 !important;
+}
+
+/* Zoom icons and other SVG icons in toolbar */
+[data-theme="dark"] [class*="Toolbar"] svg,
+[data-theme="dark"] [class*="toolbar"] svg {
+  fill: #fff !important;
+  color: #fff !important;
+}
+
+/* Story canvas wrapper */
+[data-theme="dark"] [class*="Canvas"],
+[data-theme="dark"] [class*="canvas"] {
+  background-color: #1a1a1a !important;
+  border-color: #444 !important;
+}
+
+/* The actual preview box border */
+[data-theme="dark"] .sbdocs-preview > div,
+[data-theme="dark"] [class*="PreviewContainer"] {
+  background-color: #2a2a2a !important;
+  border-color: #444 !important;
+}
+
+/* ========================================
+   Dark Mode for Args Table Controls
+   ======================================== */
+
+/* Set boolean button - only in control areas */
+[data-theme="dark"] [class*="BooleanControl"] button,
+[data-theme="dark"] [class*="booleanControl"] button {
+  background-color: #333 !important;
+  color: #fff !important;
+  border-color: #666 !important;
+}
+
+/* Boolean toggle - True/False text */
+[data-theme="dark"] [class*="BooleanControl"] span,
+[data-theme="dark"] [class*="booleanControl"] span {
+  color: #fff !important;
+}
+
+/* All control buttons in args table - exclude component buttons */
+[data-theme="dark"] .docblock-argstable button:not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] [class*="ArgTable"] button:not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] [class*="argsTable"] button:not(.float-button):not([class*="float-button"]) {
+  background-color: #444 !important;
+  color: #fff !important;
+  border-color: #666 !important;
+}
+
+/* Radio/Checkbox controls */
+[data-theme="dark"] [class*="Radio"],
+[data-theme="dark"] [class*="Checkbox"] {
+  color: #fff !important;
+}
+
+/* Select dropdowns in controls */
+[data-theme="dark"] [class*="Select"] button,
+[data-theme="dark"] select {
+  background-color: #333 !important;
+  color: #fff !important;
+  border-color: #555 !important;
+}
+
+/* General button fix for any button with "Set" text */
+[data-theme="dark"] button {
+  color: #fff !important;
+}
+
+/* Boolean toggle switch - the actual toggle control */
+[data-theme="dark"] [class*="Bool"] label,
+[data-theme="dark"] [class*="bool"] label,
+[data-theme="dark"] [class*="Toggle"] label,
+[data-theme="dark"] [class*="toggle"] label {
+  color: #fff !important;
+}
+
+/* Boolean toggle labels (False/True text) */
+[data-theme="dark"] [class*="Bool"] span,
+[data-theme="dark"] [class*="bool"] span,
+[data-theme="dark"] label span,
+[data-theme="dark"] [class*="Control"] span {
+  color: #fff !important;
+}
+
+/* The toggle switch background */
+[data-theme="dark"] [class*="Bool"] input + span,
+[data-theme="dark"] [class*="bool"] input + span,
+[data-theme="dark"] [role="switch"] {
+  background-color: #555 !important;
+}
+
+/* Toggle switch when checked/active */
+[data-theme="dark"] [class*="Bool"] input:checked + span,
+[data-theme="dark"] [role="switch"][aria-checked="true"] {
+  background-color: #5c6ac4 !important;
+}
+
+/* Segmented control for boolean (False | True buttons) */
+[data-theme="dark"] [class*="Segment"] button,
+[data-theme="dark"] [class*="segment"] button {
+  background-color: #444 !important;
+  color: #fff !important;
+  border-color: #666 !important;
+}
+
+[data-theme="dark"] [class*="Segment"] button[aria-pressed="true"],
+[data-theme="dark"] [class*="segment"] button[aria-pressed="true"] {
+  background-color: #5c6ac4 !important;
+  color: #fff !important;
+}
+
+/* ========================================
+   Fix Boolean Control Layout (Both Themes)
+   ======================================== */
+
+/* Boolean control wrapper - ensure proper layout */
+[class*="BooleanControl"],
+[class*="booleanControl"] {
+  display: inline-flex !important;
+  gap: 0 !important;
+}
+
+/* Boolean control buttons - proper segmented style */
+[class*="BooleanControl"] button,
+[class*="booleanControl"] button {
+  padding: 4px 12px !important;
+  border: 1px solid #ccc !important;
+  background: #f5f5f5 !important;
+  color: #333 !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+}
+
+[class*="BooleanControl"] button:first-child,
+[class*="booleanControl"] button:first-child {
+  border-radius: 4px 0 0 4px !important;
+  border-right: none !important;
+}
+
+[class*="BooleanControl"] button:last-child,
+[class*="booleanControl"] button:last-child {
+  border-radius: 0 4px 4px 0 !important;
+}
+
+/* Selected state */
+[class*="BooleanControl"] button[aria-pressed="true"],
+[class*="booleanControl"] button[aria-pressed="true"] {
+  background: #5c6ac4 !important;
+  color: #fff !important;
+  border-color: #5c6ac4 !important;
+}
+
+/* Dark mode boolean control */
+[data-theme="dark"] [class*="BooleanControl"] button,
+[data-theme="dark"] [class*="booleanControl"] button {
+  background: #444 !important;
+  color: #fff !important;
+  border-color: #666 !important;
+}
+
+[data-theme="dark"] [class*="BooleanControl"] button[aria-pressed="true"],
+[data-theme="dark"] [class*="booleanControl"] button[aria-pressed="true"] {
+  background: #5c6ac4 !important;
+  color: #fff !important;
+  border-color: #5c6ac4 !important;
+}
+
+/* ========================================
+   Dark Mode for MDX Documentation Pages
+   ======================================== */
+
+/* MDX page wrapper */
+[data-theme="dark"] .sbdocs-wrapper,
+[data-theme="dark"] .sbdocs {
+  background-color: #1a1a1a !important;
+}
+
+/* All text in MDX docs */
+[data-theme="dark"] .sbdocs h1,
+[data-theme="dark"] .sbdocs h2,
+[data-theme="dark"] .sbdocs h3,
+[data-theme="dark"] .sbdocs h4,
+[data-theme="dark"] .sbdocs h5,
+[data-theme="dark"] .sbdocs h6 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .sbdocs p,
+[data-theme="dark"] .sbdocs li,
+[data-theme="dark"] .sbdocs span,
+[data-theme="dark"] .sbdocs strong,
+[data-theme="dark"] .sbdocs em,
+[data-theme="dark"] .sbdocs a {
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .sbdocs a {
+  color: #6ea8fe !important;
+}
+
+[data-theme="dark"] .sbdocs a:hover {
+  color: #9ec5fe !important;
+}
+
+/* Tables in dark mode */
+[data-theme="dark"] .sbdocs table {
+  border-color: #444 !important;
+}
+
+[data-theme="dark"] .sbdocs th,
+[data-theme="dark"] .sbdocs td {
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+  background-color: #2a2a2a !important;
+}
+
+[data-theme="dark"] .sbdocs th {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+/* Code blocks in dark mode - pre and code */
+[data-theme="dark"] .sbdocs pre {
+  background-color: #2d2d2d !important;
+  border: 1px solid #444 !important;
+}
+
+[data-theme="dark"] .sbdocs pre code {
+  color: #e0e0e0 !important;
+  background: transparent !important;
+}
+
+/* Inline code in dark mode */
+[data-theme="dark"] .sbdocs :not(pre) > code {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ff7b72 !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+}
+
+/* Lists */
+[data-theme="dark"] .sbdocs ul,
+[data-theme="dark"] .sbdocs ol {
+  color: #e0e0e0 !important;
+}
+
+/* Blockquotes */
+[data-theme="dark"] .sbdocs blockquote {
+  border-left-color: #555 !important;
+  color: #ccc !important;
+  background-color: #2a2a2a !important;
+}
+
+/* HR */
+[data-theme="dark"] .sbdocs hr {
+  border-color: #444 !important;
+}
+
+/* ========================================
+   Override ZenKit Focus Styles for Storybook UI
+   ======================================== */
+
+/* Disable zenkit's global :focus-visible outline for Storybook UI elements */
+.sbdocs *:focus-visible,
+.sbdocs-wrapper *:focus-visible,
+.sb-show-main *:focus-visible,
+[class*="Canvas"]:focus-visible,
+[class*="Preview"]:focus-visible,
+.docs-story:focus-visible,
+.docs-story *:focus-visible:not(.btn):not(.form-control):not(.form-select):not(input):not(textarea):not(select):not(button):not(a),
+[class*="Story"]:focus-visible,
+[class*="story"]:focus-visible {
+  outline: none !important;
+}
+
+/* Keep focus styles for actual interactive components */
+.docs-story .btn:focus-visible,
+.docs-story button.btn:focus-visible,
+.docs-story input:focus-visible,
+.docs-story textarea:focus-visible,
+.docs-story select:focus-visible,
+.docs-story a:focus-visible,
+.docs-story [role="button"]:focus-visible {
+  outline: 2px solid var(--primary, #3b82f6) !important;
+  outline-offset: 2px !important;
+}
+
+/* Remove border/outline from story container wrappers */
+.docs-story,
+.docs-story > div,
+.docs-story > div > div,
+.docs-story div[data-theme],
+[class*="Canvas"],
+[class*="Preview"],
+[id*="story--"],
+[id*="story"],
+.sb-story,
+.sb-unstyled,
+.sb-unstyled > div {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove the inner story wrapper border (the blue rectangle around content) */
+.docs-story [data-theme],
+.docs-story > div > div,
+.sbdocs-preview > div > div,
+[class*="StoryWrapper"],
+[class*="storyWrapper"] {
+  border: none !important;
+  outline: none !important;
+}
+
+/* AGGRESSIVE: Remove ALL borders from story preview containers */
+.sbdocs-preview,
+.sbdocs-preview > *,
+.sbdocs-preview > * > *,
+.docs-story,
+.docs-story > *,
+.docs-story > * > *,
+[id^="story--"] > *,
+[id^="anchor--"] + * > *,
+[class*="css-"][class*="Preview"] *,
+[class*="css-"][class*="Canvas"] * {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Target the specific story canvas wrapper that Storybook 8 uses */
+.sb-bar + div,
+[class*="innerZoomElementWrapper"] > *,
+[id*="story"] > div > div {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Reset any box-related borders from zenkit-css in story area */
+.docs-story .box-border,
+.docs-story [class*="box-border"] {
+  border: none !important;
+}
+
+/* Override zenkit-css focus-visible for story containers */
+.docs-story div:focus-visible,
+.docs-story [data-theme]:focus-visible,
+.sbdocs-preview div:focus-visible {
+  outline: none !important;
+  border: none !important;
+}
+
+/* Ensure no card, box, or fieldset borders apply to story wrappers */
+.docs-story > div:not(.card):not(.box):not(.fieldset):not(.alert):not(.btn),
+.docs-story > div > div:not(.card):not(.box):not(.fieldset):not(.alert):not(.btn) {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Nuclear option: remove borders from ALL non-component elements in story area */
+.docs-story div[data-theme] {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Override Storybook Canvas border that may be using zenkit CSS variables */
+.sbdocs [class*="css-"] {
+  --primary: inherit;
+}
+
+/* Super specific: target Storybook 8 Canvas border wrapper */
+[class*="css-"][tabindex="0"],
+[class*="innerZoomElementWrapper"] {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Target any element using var(--primary) for border in story area */
+.docs-story *,
+.sbdocs-preview * {
+  border-color: transparent !important;
+}
+
+/* But restore borders for actual components that need them */
+.docs-story .btn,
+.docs-story .card,
+.docs-story .alert,
+.docs-story .badge,
+.docs-story .form-control,
+.docs-story .form-select,
+.docs-story input,
+.docs-story textarea,
+.docs-story select,
+.docs-story table,
+.docs-story th,
+.docs-story td {
+  border-color: revert !important;
+}
+
+/* Specifically target the story wrapper class */
+.sb-story-wrapper,
+.sb-story-wrapper[data-theme],
+div.sb-story-wrapper {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* ========================================
+   CRITICAL FIX: Target Storybook Canvas parent elements
+   ======================================== */
+
+/* Target ANY parent element of the story using :has() selector */
+div:has(> .docs-story),
+div:has(> .sb-story-wrapper),
+div:has(.docs-story),
+*:has(> .docs-story) {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Target Storybook's emotion-generated CSS classes for Canvas/Preview */
+[class^="css-"]:has(.docs-story),
+[class*=" css-"]:has(.docs-story) {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Override ALL borders in the entire preview section */
+.sbdocs-preview,
+.sbdocs-preview *,
+#storybook-preview-wrapper,
+#storybook-preview-wrapper *,
+#storybook-preview-iframe,
+.sb-show-main > div,
+.sb-show-main > div > div {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Target story container by ID pattern */
+[id^="anchor--"] ~ *,
+[id^="anchor--"] + div,
+[id^="anchor--"] + div > div {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Most aggressive: target by structure */
+.sbdocs-content > div > div,
+.sbdocs-wrapper > div > div > div {
+  border: none !important;
+  outline: none !important;
+}
+
+/* ========================================
+   NUCLEAR OPTION: Remove ALL borders from docs pages
+   Then whitelist only components that need them
+   ======================================== */
+
+/* Remove borders from EVERYTHING in docs */
+.sbdocs,
+.sbdocs *,
+.sbdocs-wrapper,
+.sbdocs-wrapper *,
+.sbdocs-content,
+.sbdocs-content *,
+.sbdocs-preview,
+.sbdocs-preview * {
+  border-style: none !important;
+  outline-style: none !important;
+}
+
+/* Restore borders for actual UI components that need them */
+.sbdocs .btn,
+.sbdocs .card,
+.sbdocs .alert,
+.sbdocs .badge,
+.sbdocs .form-control,
+.sbdocs .form-select,
+.sbdocs input,
+.sbdocs textarea,
+.sbdocs select,
+.sbdocs table,
+.sbdocs th,
+.sbdocs td,
+.sbdocs .chip,
+.sbdocs .tag,
+.sbdocs .avatar,
+.sbdocs .float-button,
+.sbdocs [class*="float-button"],
+.sbdocs .btn-group,
+.sbdocs .input-group,
+.sbdocs pre,
+.sbdocs code {
+  border-style: revert !important;
+}
+
+/* Restore Storybook UI elements that need borders */
+.sbdocs .docblock-source,
+.sbdocs .docblock-source pre,
+.sbdocs .docblock-argstable,
+.sbdocs .docblock-argstable th,
+.sbdocs .docblock-argstable td {
+  border-style: solid !important;
+}
+
+/* ========================================
+   CRITICAL FIX: Override global :focus-visible
+   ROOT CAUSE - zenkit-css line 53493:
+   :focus-visible { outline: 2px solid var(--primary); }
+   ======================================== */
+
+/* Override the global :focus-visible for ALL elements in Storybook */
+.sbdocs :focus-visible,
+.sbdocs *:focus-visible,
+.sbdocs-wrapper :focus-visible,
+.sbdocs-wrapper *:focus-visible,
+#storybook-docs :focus-visible,
+#storybook-docs *:focus-visible,
+.sb-show-main :focus-visible,
+.sb-show-main *:focus-visible {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-offset: 0 !important;
+}
+
+/* Target focusable elements (tabindex) */
+.sbdocs [tabindex]:focus-visible,
+.sbdocs [tabindex="0"]:focus-visible,
+.sbdocs-wrapper [tabindex]:focus-visible,
+[tabindex]:focus-visible:not(.btn):not(.form-control):not(button):not(a):not(input) {
+  outline: none !important;
+  outline-width: 0 !important;
+}
+
+/* Override :focus-visible at document level (highest specificity) */
+html body .sbdocs :focus-visible,
+html body .sbdocs-wrapper :focus-visible,
+html body #storybook-root :focus-visible,
+html body .docs-story :focus-visible {
+  outline: none !important;
+  border: none !important;
+}
+
+/* The actual element that likely has the border - Canvas preview wrapper */
+.sbdocs-preview > div:focus-visible,
+.docs-story > div:focus-visible,
+[class*="css-"]:focus-visible {
+  outline: none !important;
+  outline-style: none !important;
+}

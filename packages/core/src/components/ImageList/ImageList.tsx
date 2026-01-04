@@ -44,12 +44,11 @@ export const ImageList = forwardRef<HTMLDivElement, ImageListProps>(
     return (
       <div
         ref={ref}
-        className={cn('image-list', `image-list-${variant}`, className)}
+        className={cn('imagelist', `imagelist-${variant}`, `imagelist-cols-${cols}`, className)}
         style={{
           ...style,
-          '--image-list-cols': cols,
-          '--image-list-gap': `${gap}px`,
-          '--image-list-row-height': rowHeight === 'auto' ? 'auto' : `${rowHeight}px`,
+          '--imagelist-gap': `${gap}px`,
+          '--imagelist-row-height': rowHeight === 'auto' ? 'auto' : `${rowHeight}px`,
         } as React.CSSProperties}
         {...props}
       >
@@ -105,22 +104,22 @@ export const ImageListItem = forwardRef<HTMLDivElement, ImageListItemProps>(
     return (
       <div
         ref={ref}
-        className={cn('image-list-item', onClick && 'image-list-item-clickable', className)}
+        className={cn('imagelist-item', onClick && 'imagelist-item-clickable', className)}
         style={{
           ...style,
-          '--image-list-item-cols': cols,
-          '--image-list-item-rows': rows,
+          '--imagelist-item-cols': cols,
+          '--imagelist-item-rows': rows,
         } as React.CSSProperties}
         onClick={onClick}
         {...props}
       >
         {children || (
           <>
-            {src && <img src={src} alt={alt} className="image-list-item-img" loading="lazy" />}
+            {src && <img src={src} alt={alt} className="imagelist-item-img" loading="lazy" />}
             {(title || subtitle) && (
-              <div className="image-list-item-bar">
-                {title && <span className="image-list-item-title">{title}</span>}
-                {subtitle && <span className="image-list-item-subtitle">{subtitle}</span>}
+              <div className="imagelist-item-bar">
+                {title && <span className="imagelist-item-title">{title}</span>}
+                {subtitle && <span className="imagelist-item-subtitle">{subtitle}</span>}
               </div>
             )}
           </>
@@ -158,15 +157,15 @@ export const ImageListItemBar = forwardRef<HTMLDivElement, ImageListItemBarProps
       <div
         ref={ref}
         className={cn(
-          'image-list-item-bar',
-          `image-list-item-bar-${position}`,
+          'imagelist-item-bar',
+          `imagelist-item-bar-${position}`,
           className
         )}
         {...props}
       >
-        <div className="image-list-item-bar-content">{children}</div>
+        <div className="imagelist-item-bar-content">{children}</div>
         {actionIcon && (
-          <div className={cn('image-list-item-bar-action', `image-list-item-bar-action-${actionPosition}`)}>
+          <div className={cn('imagelist-item-bar-actions', `imagelist-item-bar-actions-${actionPosition}`)}>
             {actionIcon}
           </div>
         )}

@@ -76,9 +76,8 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       <div
         ref={ref}
         className={cn(
-          'zk-toast',
-          `zk-toast--${type}`,
-          `zk-toast--${position}`,
+          'toast',
+          `toast-${type}`,
           className
         )}
         role="alert"
@@ -86,18 +85,18 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         {...props}
       >
         {type !== 'default' && (
-          <span className="zk-toast__icon">{typeIcons[type]}</span>
+          <span className="toast-icon">{typeIcons[type]}</span>
         )}
-        <div className="zk-toast__content">
-          {title && <div className="zk-toast__title">{title}</div>}
-          {description && <div className="zk-toast__description">{description}</div>}
+        <div className="toast-body">
+          {title && <div className="toast-title">{title}</div>}
+          {description && <div className="toast-description">{description}</div>}
           {children}
         </div>
-        {action && <div className="zk-toast__action">{action}</div>}
+        {action && <div className="toast-action">{action}</div>}
         {closable && (
           <button
             type="button"
-            className="zk-toast__close"
+            className="toast-close"
             onClick={handleDismiss}
             aria-label="Close"
           >
@@ -119,10 +118,20 @@ export interface ToastContainerProps extends React.HTMLAttributes<HTMLDivElement
 
 export const ToastContainer = forwardRef<HTMLDivElement, ToastContainerProps>(
   ({ className, position = 'bottom-right', children, ...props }, ref) => {
+    // Map position to zenkit-css class names
+    const positionMap: Record<string, string> = {
+      'top-left': 'toast-container-top-start',
+      'top-center': 'toast-container-top-center',
+      'top-right': 'toast-container-top-end',
+      'bottom-left': 'toast-container-bottom-start',
+      'bottom-center': 'toast-container-bottom-center',
+      'bottom-right': 'toast-container-bottom-end',
+    };
+
     return (
       <div
         ref={ref}
-        className={cn('zk-toast-container', `zk-toast-container--${position}`, className)}
+        className={cn('toast-container', positionMap[position], className)}
         {...props}
       >
         {children}

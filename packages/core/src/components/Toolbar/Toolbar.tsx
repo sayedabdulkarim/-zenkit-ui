@@ -30,9 +30,9 @@ export const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(
           role="toolbar"
           aria-orientation={orientation}
           className={cn(
-            'zk-toolbar',
-            `zk-toolbar--${orientation}`,
-            `zk-toolbar--${size}`,
+            'toolbar',
+            `toolbar-${orientation}`,
+            `toolbar-${size}`,
             className
           )}
           {...props}
@@ -65,10 +65,10 @@ export const ToolbarButton = forwardRef<HTMLButtonElement, ToolbarButtonProps>(
         ref={ref}
         type="button"
         className={cn(
-          'zk-toolbar__button',
-          `zk-toolbar__button--${variant}`,
-          `zk-toolbar__button--${size}`,
-          isActive && 'zk-toolbar__button--active',
+          'toolbar-button',
+          `toolbar-button--${variant}`,
+          `toolbar-button--${size}`,
+          isActive && 'toolbar-button--active',
           className
         )}
         aria-pressed={isActive}
@@ -96,8 +96,8 @@ export const ToolbarSeparator = forwardRef<HTMLDivElement, ToolbarSeparatorProps
         role="separator"
         aria-orientation={orientation === 'horizontal' ? 'vertical' : 'horizontal'}
         className={cn(
-          'zk-toolbar__separator',
-          orientation === 'horizontal' ? 'zk-toolbar__separator--vertical' : 'zk-toolbar__separator--horizontal',
+          'toolbar-separator',
+          orientation === 'horizontal' ? 'toolbar-separator--vertical' : 'toolbar-separator--horizontal',
           className
         )}
         {...props}
@@ -123,7 +123,7 @@ export const ToolbarGroup = forwardRef<HTMLDivElement, ToolbarGroupProps>(
       <div
         ref={ref}
         role="group"
-        className={cn('zk-toolbar__group', className)}
+        className={cn('toolbar-group', className)}
         style={{
           display: 'flex',
           flexDirection: orientation === 'vertical' ? 'column' : 'row',
@@ -155,7 +155,7 @@ export const ToolbarToggleGroup = forwardRef<HTMLDivElement, ToolbarToggleGroupP
       <div
         ref={ref}
         role="group"
-        className={cn('zk-toolbar__toggle-group', className)}
+        className={cn('toolbar-toggle-group', className)}
         data-type={type}
         {...props}
       >
@@ -182,7 +182,7 @@ export const ToolbarLink = forwardRef<HTMLAnchorElement, ToolbarLinkProps>(
     return (
       <a
         ref={ref}
-        className={cn('zk-toolbar__link', `zk-toolbar__link--${size}`, className)}
+        className={cn('toolbar-link', `toolbar-link--${size}`, className)}
         {...props}
       >
         {children}

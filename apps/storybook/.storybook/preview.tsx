@@ -54,16 +54,51 @@ const withTheme: Decorator = (Story, context) => {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     document.body.setAttribute('data-theme', theme);
+
+    // Inject CSS to remove borders from story containers
+    const styleId = 'sb-border-fix';
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement('style');
+      style.id = styleId;
+      style.textContent = `
+        /* Remove all borders/outlines from story containers */
+        .docs-story, .docs-story > *, .docs-story > * > *,
+        .sb-story-wrapper, [data-theme],
+        div:has(> .docs-story), div:has(> .sb-story-wrapper),
+        [class^="css-"]:has(.docs-story), [class*="css-"]:has(.sb-story-wrapper),
+        /* Canvas and Preview wrappers */
+        [class*="innerZoomElementWrapper"],
+        [class*="Canvas"], [class*="Preview"],
+        /* All focusable elements */
+        [tabindex], [tabindex="0"],
+        /* Override focus-visible globally in docs */
+        .sbdocs :focus-visible, .sbdocs *:focus-visible,
+        #storybook-docs :focus-visible, #storybook-docs *:focus-visible {
+          border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
+        }
+        /* Remove primary outline from focus-visible */
+        :focus-visible {
+          outline: none !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
   }, [theme]);
 
   return (
     <div
       data-theme={theme}
+      className="sb-story-wrapper"
       style={{
         padding: '1rem',
         minHeight: '100px',
         backgroundColor: theme === 'dark' ? '#1a1a1a' : '#ffffff',
         color: theme === 'dark' ? '#ffffff' : '#1a1a1a',
+        border: 'none',
+        outline: 'none',
+        boxShadow: 'none',
       }}
     >
       <Story />
@@ -212,7 +247,16 @@ const preview: Preview = {
     },
     docs: {
       container: ThemedDocsContainer,
+      canvas: {
+        sourceState: 'shown',
+      },
     },
+    // Disable outline addon
+    outline: {
+      disable: true,
+    },
+    // Use fullscreen layout by default to avoid Canvas border
+    layout: 'fullscreen',
   },
   globalTypes: {
     theme: {
@@ -230,6 +274,7 @@ const preview: Preview = {
   },
   initialGlobals: {
     theme: 'light',
+    outline: false,
   },
   decorators: [withTheme],
 };

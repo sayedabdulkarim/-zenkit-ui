@@ -119,27 +119,27 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps<any>>(
       <div
         ref={ref}
         className={cn(
-          'data-grid',
-          bordered && 'data-grid-bordered',
-          striped && 'data-grid-striped',
-          hover && 'data-grid-hover',
-          stickyHeader && 'data-grid-sticky',
+          'datagrid',
+          bordered && 'datagrid-bordered',
+          striped && 'datagrid-striped',
+          hover && 'datagrid-hover',
+          stickyHeader && 'datagrid-sticky',
           className
         )}
         style={{ height }}
         {...props}
       >
         {loading && (
-          <div className="data-grid-loading">
-            <span className="data-grid-spinner" />
+          <div className="datagrid-loading">
+            <span className="datagrid-spinner" />
           </div>
         )}
-        <div className="data-grid-container">
-          <table className="data-grid-table">
-            <thead className="data-grid-header">
+        <div className="datagrid-container">
+          <table className="datagrid-table">
+            <thead className="datagrid-header">
               <tr>
                 {rowSelection && (
-                  <th className="data-grid-cell data-grid-selection">
+                  <th className="datagrid-header-cell datagrid-selection">
                     <input
                       type="checkbox"
                       checked={dataSource.length > 0 && dataSource.every((r, i) => rowSelection.selectedRowKeys.includes(getRowKey(r, i)))}
@@ -150,14 +150,14 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps<any>>(
                 {columns.map((col) => (
                   <th
                     key={col.key}
-                    className={cn('data-grid-cell', col.sortable && 'data-grid-sortable')}
+                    className={cn('datagrid-header-cell', col.sortable && 'datagrid-header-cell-sortable')}
                     style={{ width: col.width, minWidth: col.minWidth }}
                     onClick={() => col.sortable && handleSort(col.key)}
                   >
-                    <div className="data-grid-header-content">
+                    <div className="datagrid-header-content">
                       {col.title}
                       {col.sortable && (
-                        <span className="data-grid-sort-icon">
+                        <span className="datagrid-sort-icon">
                           {sortConfig?.key === col.key ? (sortConfig.direction === 'asc' ? '↑' : '↓') : '↕'}
                         </span>
                       )}
@@ -166,10 +166,10 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps<any>>(
                 ))}
               </tr>
             </thead>
-            <tbody className="data-grid-body">
+            <tbody className="datagrid-body">
               {sortedData.length === 0 ? (
                 <tr>
-                  <td colSpan={columns.length + (rowSelection ? 1 : 0)} className="data-grid-empty">
+                  <td colSpan={columns.length + (rowSelection ? 1 : 0)} className="datagrid-empty">
                     {emptyText}
                   </td>
                 </tr>
@@ -181,11 +181,11 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps<any>>(
                   return (
                     <tr
                       key={key}
-                      className={cn('data-grid-row', isSelected && 'data-grid-row-selected')}
+                      className={cn('datagrid-row', isSelected && 'datagrid-row-selected')}
                       onClick={() => onRowClick?.(record, index)}
                     >
                       {rowSelection && (
-                        <td className="data-grid-cell data-grid-selection">
+                        <td className="datagrid-cell datagrid-selection">
                           <input
                             type="checkbox"
                             checked={isSelected}
@@ -195,7 +195,7 @@ export const DataGrid = forwardRef<HTMLDivElement, DataGridProps<any>>(
                         </td>
                       )}
                       {columns.map((col) => (
-                        <td key={col.key} className="data-grid-cell">
+                        <td key={col.key} className="datagrid-cell">
                           {col.render
                             ? col.render(col.dataIndex ? record[col.dataIndex] : undefined, record, index)
                             : col.dataIndex

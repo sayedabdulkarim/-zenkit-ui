@@ -84,13 +84,13 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 
     const content = (
       <div
-        className={cn('zk-dialog-overlay', overlay && 'zk-dialog-overlay--visible')}
+        className={cn('dialog-overlay', overlay && 'dialog-overlay-visible')}
         onClick={handleOverlayClick}
         aria-hidden="true"
       >
         <div
           ref={ref}
-          className={cn('zk-dialog', `zk-dialog--${size}`, className)}
+          className={cn('dialog', `dialog-${size}`, className)}
           role="dialog"
           aria-modal="true"
           aria-labelledby={title ? 'dialog-title' : undefined}
@@ -98,16 +98,16 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
           {...props}
         >
           {title && (
-            <div id="dialog-title" className="zk-dialog__title">
+            <div id="dialog-title" className="dialog-title">
               {title}
             </div>
           )}
           {description && (
-            <div id="dialog-description" className="zk-dialog__description">
+            <div id="dialog-description" className="dialog-description">
               {description}
             </div>
           )}
-          <div className="zk-dialog__content">{children}</div>
+          <div className="dialog-content">{children}</div>
         </div>
       </div>
     );
@@ -127,7 +127,7 @@ export interface DialogHeaderProps extends React.HTMLAttributes<HTMLDivElement> 
 
 export const DialogHeader = forwardRef<HTMLDivElement, DialogHeaderProps>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('zk-dialog__header', className)} {...props} />
+    <div ref={ref} className={cn('dialog-header', className)} {...props} />
   )
 );
 
@@ -137,7 +137,7 @@ export interface DialogBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const DialogBody = forwardRef<HTMLDivElement, DialogBodyProps>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('zk-dialog__body', className)} {...props} />
+    <div ref={ref} className={cn('dialog-body', className)} {...props} />
   )
 );
 
@@ -147,7 +147,7 @@ export interface DialogFooterProps extends React.HTMLAttributes<HTMLDivElement> 
 
 export const DialogFooter = forwardRef<HTMLDivElement, DialogFooterProps>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('zk-dialog__footer', className)} {...props} />
+    <div ref={ref} className={cn('dialog-footer', className)} {...props} />
   )
 );
 
@@ -157,7 +157,7 @@ export interface DialogCloseProps extends React.ButtonHTMLAttributes<HTMLButtonE
 
 export const DialogClose = forwardRef<HTMLButtonElement, DialogCloseProps>(
   ({ className, children, ...props }, ref) => (
-    <button ref={ref} className={cn('zk-dialog__close', className)} type="button" {...props}>
+    <button ref={ref} className={cn('dialog-close', className)} type="button" {...props}>
       {children || '✕'}
     </button>
   )

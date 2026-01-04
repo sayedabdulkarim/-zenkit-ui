@@ -49,35 +49,35 @@ export const Blockquote = forwardRef<HTMLQuoteElement, BlockquoteProps>(
     );
 
     return (
-      <figure className={cn('zk-blockquote-figure', className)}>
+      <figure className={cn('blockquote-figure', className)}>
         <blockquote
           ref={ref}
           cite={cite}
           className={cn(
-            'zk-blockquote',
-            `zk-blockquote--${color}`,
-            `zk-blockquote--${size}`,
-            `zk-blockquote--border-${borderPosition}`,
-            withBackground && 'zk-blockquote--with-bg'
+            'blockquote',
+            `blockquote-${color}`,
+            `blockquote-${size}`,
+            `blockquote-border-${borderPosition}`,
+            withBackground && 'blockquote-with-bg'
           )}
           {...props}
         >
           {icon !== null && (
-            <span className="zk-blockquote__icon">
+            <span className="blockquote-icon">
               {icon || defaultIcon}
             </span>
           )}
-          <div className="zk-blockquote__content">
+          <div className="blockquote-content">
             {children}
           </div>
         </blockquote>
 
         {(author || authorTitle) && (
-          <figcaption className="zk-blockquote__caption">
-            {avatar && <span className="zk-blockquote__avatar">{avatar}</span>}
-            <div className="zk-blockquote__author-info">
-              {author && <cite className="zk-blockquote__author">{author}</cite>}
-              {authorTitle && <span className="zk-blockquote__author-title">{authorTitle}</span>}
+          <figcaption className="blockquote-caption">
+            {avatar && <span className="blockquote-avatar">{avatar}</span>}
+            <div className="blockquote-author-info">
+              {author && <cite className="blockquote-author">{author}</cite>}
+              {authorTitle && <span className="blockquote-author-title">{authorTitle}</span>}
             </div>
           </figcaption>
         )}

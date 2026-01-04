@@ -63,7 +63,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           />
           <button
             type="button"
-            className="password-input-toggle"
+            className="password-toggle"
             onClick={() => setVisible(!visible)}
             disabled={disabled}
             tabIndex={-1}

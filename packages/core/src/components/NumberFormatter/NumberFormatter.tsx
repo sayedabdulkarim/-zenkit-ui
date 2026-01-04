@@ -123,7 +123,7 @@ export const NumberFormatter = forwardRef<HTMLSpanElement, NumberFormatterProps>
     ]);
 
     return (
-      <span ref={ref} className={cn('zk-number-formatter', className)} {...props}>
+      <span ref={ref} className={cn('number-formatter', className)} {...props}>
         {prefix}{formattedValue}{suffix}
       </span>
     );

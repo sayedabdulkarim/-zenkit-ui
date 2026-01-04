@@ -60,40 +60,40 @@ export const NavbarBrand = forwardRef<HTMLDivElement, NavbarBrandProps>(
 NavbarBrand.displayName = 'NavbarBrand';
 
 // Navbar Content
-export interface NavbarContentProps extends HTMLAttributes<HTMLDivElement> {
+export interface NavbarContentProps extends HTMLAttributes<HTMLUListElement> {
   /** Justify content */
   justify?: 'start' | 'center' | 'end';
 }
 
-export const NavbarContent = forwardRef<HTMLDivElement, NavbarContentProps>(
+export const NavbarContent = forwardRef<HTMLUListElement, NavbarContentProps>(
   ({ justify = 'start', className, children, ...props }, ref) => (
-    <div
+    <ul
       ref={ref}
-      className={cn('navbar-content', `navbar-content-${justify}`, className)}
+      className={cn('navbar-nav', `navbar-nav-${justify}`, className)}
       {...props}
     >
       {children}
-    </div>
+    </ul>
   )
 );
 
 NavbarContent.displayName = 'NavbarContent';
 
 // Navbar Item
-export interface NavbarItemProps extends HTMLAttributes<HTMLDivElement> {
+export interface NavbarItemProps extends HTMLAttributes<HTMLLIElement> {
   /** Active state */
   active?: boolean;
 }
 
-export const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
+export const NavbarItem = forwardRef<HTMLLIElement, NavbarItemProps>(
   ({ active = false, className, children, ...props }, ref) => (
-    <div
+    <li
       ref={ref}
-      className={cn('navbar-item', active && 'navbar-item-active', className)}
+      className={cn('nav-item', active && 'active', className)}
       {...props}
     >
       {children}
-    </div>
+    </li>
   )
 );
 
@@ -112,12 +112,12 @@ export const NavbarMenuToggle = forwardRef<HTMLButtonElement, NavbarMenuTogglePr
       type="button"
       aria-label={isOpen ? 'Close menu' : 'Open menu'}
       aria-expanded={isOpen}
-      className={cn('navbar-menu-toggle', isOpen && 'navbar-menu-toggle-open', className)}
+      className={cn('navbar-toggle', isOpen && 'active', className)}
       {...props}
     >
-      <span className="navbar-menu-toggle-line" />
-      <span className="navbar-menu-toggle-line" />
-      <span className="navbar-menu-toggle-line" />
+      <span />
+      <span />
+      <span />
     </button>
   )
 );
@@ -134,7 +134,7 @@ export const NavbarMenu = forwardRef<HTMLDivElement, NavbarMenuProps>(
   ({ isOpen = false, className, children, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn('navbar-menu', isOpen && 'navbar-menu-open', className)}
+      className={cn('navbar-collapse', isOpen && 'show', className)}
       {...props}
     >
       {children}
@@ -149,7 +149,7 @@ export interface NavbarMenuItemProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const NavbarMenuItem = forwardRef<HTMLDivElement, NavbarMenuItemProps>(
   ({ className, children, ...props }, ref) => (
-    <div ref={ref} className={cn('navbar-menu-item', className)} {...props}>
+    <div ref={ref} className={cn('nav-item', className)} {...props}>
       {children}
     </div>
   )

@@ -74,10 +74,10 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
       // Default fallback UI
       return (
-        <div className={cn('zk-error-boundary', className)}>
-          <div className="zk-error-boundary__content">
+        <div className={cn('error-boundary', className)}>
+          <div className="error-boundary-content">
             <svg
-              className="zk-error-boundary__icon"
+              className="error-boundary-icon"
               viewBox="0 0 24 24"
               width="48"
               height="48"
@@ -89,19 +89,19 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
               <line x1="12" y1="8" x2="12" y2="12" />
               <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
-            <h2 className="zk-error-boundary__title">Something went wrong</h2>
-            <p className="zk-error-boundary__message">{error.message}</p>
+            <h2 className="error-boundary-title">Something went wrong</h2>
+            <p className="error-boundary-message">{error.message}</p>
             <button
               type="button"
-              className="zk-error-boundary__button"
+              className="error-boundary-button"
               onClick={this.resetError}
             >
               Try again
             </button>
             {process.env.NODE_ENV === 'development' && (
-              <details className="zk-error-boundary__details">
+              <details className="error-boundary-details">
                 <summary>Error details</summary>
-                <pre className="zk-error-boundary__stack">{error.stack}</pre>
+                <pre className="error-boundary-stack">{error.stack}</pre>
               </details>
             )}
           </div>
@@ -157,10 +157,10 @@ export const ErrorFallback: React.FC<ErrorFallbackProps> = ({
   showStack = false,
   className,
 }) => (
-  <div className={cn('zk-error-fallback', className)}>
-    <div className="zk-error-fallback__content">
+  <div className={cn('error-fallback', className)}>
+    <div className="error-fallback-content">
       <svg
-        className="zk-error-fallback__icon"
+        className="error-fallback-icon"
         viewBox="0 0 24 24"
         width="48"
         height="48"
@@ -172,19 +172,19 @@ export const ErrorFallback: React.FC<ErrorFallbackProps> = ({
         <line x1="12" y1="9" x2="12" y2="13" />
         <line x1="12" y1="17" x2="12.01" y2="17" />
       </svg>
-      <h2 className="zk-error-fallback__title">{title}</h2>
-      <p className="zk-error-fallback__message">{message || error.message}</p>
+      <h2 className="error-fallback-title">{title}</h2>
+      <p className="error-fallback-message">{message || error.message}</p>
       <button
         type="button"
-        className="zk-error-fallback__button"
+        className="error-fallback-button"
         onClick={resetError}
       >
         Try again
       </button>
       {showStack && (
-        <details className="zk-error-fallback__details">
+        <details className="error-fallback-details">
           <summary>Error details</summary>
-          <pre className="zk-error-fallback__stack">{error.stack}</pre>
+          <pre className="error-fallback-stack">{error.stack}</pre>
         </details>
       )}
     </div>

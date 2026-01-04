@@ -134,8 +134,8 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
     }, [ref]);
 
     const defaultLoader = (
-      <div className="zk-infinite-scroll__loader">
-        <svg className="zk-infinite-scroll__spinner" viewBox="0 0 24 24" width="24" height="24">
+      <div className="infinite-scroll-loader">
+        <svg className="infinite-scroll-spinner" viewBox="0 0 24 24" width="24" height="24">
           <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="31.4" strokeLinecap="round">
             <animateTransform attributeName="transform" type="rotate" values="0 12 12;360 12 12" dur="1s" repeatCount="indefinite" />
           </circle>
@@ -145,7 +145,7 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
     );
 
     const defaultEndMessage = (
-      <div className="zk-infinite-scroll__end">
+      <div className="infinite-scroll-end">
         No more items
       </div>
     );
@@ -157,8 +157,8 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
       <div
         ref={containerRef}
         className={cn(
-          'zk-infinite-scroll',
-          inverse && 'zk-infinite-scroll--inverse',
+          'infinite-scroll',
+          inverse && 'infinite-scroll-inverse',
           className
         )}
         style={{

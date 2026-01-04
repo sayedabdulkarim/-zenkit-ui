@@ -89,13 +89,13 @@ export const MonthPicker = forwardRef<HTMLInputElement, MonthPickerProps>(
     const displayValue = value ? `${months[value.month]} ${value.year}` : '';
 
     return (
-      <div ref={containerRef} className={cn('zk-month-picker', `zk-month-picker--${size}`, className)}>
+      <div ref={containerRef} className={cn('month-picker', `month-picker-${size}`, className)}>
         <div
           className={cn(
-            'zk-month-picker__input',
-            error && 'zk-month-picker__input--error',
-            disabled && 'zk-month-picker__input--disabled',
-            open && 'zk-month-picker__input--open'
+            'month-picker-input',
+            error && 'month-picker-input--error',
+            disabled && 'month-picker-input--disabled',
+            open && 'month-picker-input--open'
           )}
           onClick={() => !disabled && setOpen(!open)}
         >
@@ -106,18 +106,18 @@ export const MonthPicker = forwardRef<HTMLInputElement, MonthPickerProps>(
             disabled={disabled}
             placeholder={placeholder}
             value={displayValue}
-            className="zk-month-picker__field"
+            className="month-picker-field"
             {...props}
           />
-          <div className="zk-month-picker__icons">
+          <div className="month-picker-icons">
             {clearable && value && !disabled && (
-              <button type="button" className="zk-month-picker__clear" onClick={handleClear}>
+              <button type="button" className="month-picker-clear" onClick={handleClear}>
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
                   <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
             )}
-            <svg className="zk-month-picker__icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
+            <svg className="month-picker-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
               <line x1="16" y1="2" x2="16" y2="6" />
               <line x1="8" y1="2" x2="8" y2="6" />
@@ -127,23 +127,23 @@ export const MonthPicker = forwardRef<HTMLInputElement, MonthPickerProps>(
         </div>
 
         {open && (
-          <div className="zk-month-picker__dropdown">
-            <div className="zk-month-picker__header">
+          <div className="month-picker-dropdown">
+            <div className="month-picker-header">
               <button
                 type="button"
                 onClick={() => navigateYear(-1)}
-                className="zk-month-picker__nav"
+                className="month-picker-nav"
                 disabled={viewYear <= minYear}
               >
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
                   <polyline points="15 18 9 12 15 6" />
                 </svg>
               </button>
-              <span className="zk-month-picker__title">{viewYear}</span>
+              <span className="month-picker-title">{viewYear}</span>
               <button
                 type="button"
                 onClick={() => navigateYear(1)}
-                className="zk-month-picker__nav"
+                className="month-picker-nav"
                 disabled={viewYear >= maxYear}
               >
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
@@ -151,14 +151,14 @@ export const MonthPicker = forwardRef<HTMLInputElement, MonthPickerProps>(
                 </svg>
               </button>
             </div>
-            <div className="zk-month-picker__grid">
+            <div className="month-picker-grid">
               {MONTHS_SHORT.map((month, index) => (
                 <button
                   key={month}
                   type="button"
                   className={cn(
-                    'zk-month-picker__month',
-                    isSelected(index) && 'zk-month-picker__month--selected'
+                    'month-picker-month',
+                    isSelected(index) && 'month-picker-month--selected'
                   )}
                   onClick={() => handleSelect(index)}
                 >

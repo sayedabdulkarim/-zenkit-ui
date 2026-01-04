@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useState, type ButtonHTMLAttributes, type ReactNode } from 'react';
+import React, { forwardRef, useState, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { cn } from '../../utils/cn';
 
 export interface FloatButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -21,6 +21,28 @@ export interface FloatButtonProps extends ButtonHTMLAttributes<HTMLButtonElement
   /** Target for link */
   target?: string;
 }
+
+// Map position prop to zenkit-css class names
+const getPositionClasses = (position: string, isGroup = false) => {
+  if (isGroup) {
+    const positionMap: Record<string, string> = {
+      'bottom-right': 'float-button-group-right',
+      'bottom-left': 'float-button-group-left',
+      'top-right': 'float-button-group-right-top',
+      'top-left': 'float-button-group-left-top',
+    };
+    return positionMap[position] || positionMap['bottom-right'];
+  } else {
+    // Single FloatButton needs both 'float-button-single' and position class
+    const positionMap: Record<string, string> = {
+      'bottom-right': 'float-button-single float-button-single-right',
+      'bottom-left': 'float-button-single float-button-single-left',
+      'top-right': 'float-button-single float-button-single-right',
+      'top-left': 'float-button-single float-button-single-left',
+    };
+    return positionMap[position] || positionMap['bottom-right'];
+  }
+};
 
 export const FloatButton = forwardRef<HTMLButtonElement, FloatButtonProps>(
   (
@@ -44,8 +66,8 @@ export const FloatButton = forwardRef<HTMLButtonElement, FloatButtonProps>(
     const content = (
       <>
         {icon && <span className="float-button-icon">{icon}</span>}
-        {children && <span className="float-button-content">{children}</span>}
-        {badge !== undefined && <span className="float-button-badge">{badge}</span>}
+        {children && <span className="float-button-text">{children}</span>}
+        {badge !== undefined && <span className="float-button-badge"><span className="float-button-badge-count">{badge}</span></span>}
         {tooltip && showTooltip && (
           <span className="float-button-tooltip">{tooltip}</span>
         )}
@@ -56,7 +78,7 @@ export const FloatButton = forwardRef<HTMLButtonElement, FloatButtonProps>(
       'float-button',
       `float-button-${shape}`,
       `float-button-${variant}`,
-      `float-button-${position}`,
+      getPositionClasses(position, false),
       className
     );
 
@@ -155,23 +177,27 @@ export const FloatButtonGroup = forwardRef<HTMLDivElement, FloatButtonGroupProps
         ref={ref}
         className={cn(
           'float-button-group',
-          `float-button-group-${position}`,
-          isOpen && 'float-button-group-open',
+          getPositionClasses(position, true),
+          isOpen && 'is-open',
           className
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        <div className="float-button-group-items">
-          {children}
+        <div className="float-button-menu">
+          {React.Children.map(children, (child, index) => (
+            <div className="float-button-menu-item" key={index}>
+              {child}
+            </div>
+          ))}
         </div>
         <button
           type="button"
-          className={cn('float-button', `float-button-${shape}`, 'float-button-group-trigger')}
+          className={cn('float-button', `float-button-${shape}`, 'float-button-trigger')}
           onClick={trigger === 'click' ? handleToggle : undefined}
         >
-          <span className="float-button-icon">
+          <span className="float-button-trigger-icon">
             {isOpen ? (closeIcon || '×') : (icon || '+')}
           </span>
         </button>

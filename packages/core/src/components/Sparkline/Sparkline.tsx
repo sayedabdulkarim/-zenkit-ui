@@ -176,7 +176,7 @@ export const Sparkline = forwardRef<SVGSVGElement, SparklineProps>(
       return (
         <svg
           ref={ref}
-          className={cn('zk-sparkline', className)}
+          className={cn('sparkline', className)}
           width={width}
           height={height}
           viewBox={`0 0 ${width} ${height}`}
@@ -192,7 +192,7 @@ export const Sparkline = forwardRef<SVGSVGElement, SparklineProps>(
     return (
       <svg
         ref={ref}
-        className={cn('zk-sparkline', `zk-sparkline--${type}`, className)}
+        className={cn('sparkline', `sparkline-${type}`, className)}
         width={width}
         height={height}
         viewBox={`0 0 ${width} ${height}`}

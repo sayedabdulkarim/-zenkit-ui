@@ -159,9 +159,9 @@ export const VirtualList = forwardRef<HTMLDivElement, VirtualListProps<unknown>>
 
     if (loading) {
       return (
-        <div className={cn('zk-virtual-list', 'zk-virtual-list--loading', className)} style={{ height, width }}>
+        <div className={cn('virtual-list', 'virtual-list-loading', className)} style={{ height, width }}>
           {loadingComponent || (
-            <div className="zk-virtual-list__loading">Loading...</div>
+            <div className="virtual-list-loader">Loading...</div>
           )}
         </div>
       );
@@ -169,9 +169,9 @@ export const VirtualList = forwardRef<HTMLDivElement, VirtualListProps<unknown>>
 
     if (data.length === 0) {
       return (
-        <div className={cn('zk-virtual-list', 'zk-virtual-list--empty', className)} style={{ height, width }}>
+        <div className={cn('virtual-list', 'virtual-list-empty', className)} style={{ height, width }}>
           {emptyComponent || (
-            <div className="zk-virtual-list__empty">No items</div>
+            <div className="virtual-list-empty-text">No items</div>
           )}
         </div>
       );
@@ -201,7 +201,7 @@ export const VirtualList = forwardRef<HTMLDivElement, VirtualListProps<unknown>>
     return (
       <div
         ref={containerRef}
-        className={cn('zk-virtual-list', className)}
+        className={cn('virtual-list', className)}
         style={{ height, width, overflow: 'auto', position: 'relative' }}
         onScroll={handleScroll}
         {...props}

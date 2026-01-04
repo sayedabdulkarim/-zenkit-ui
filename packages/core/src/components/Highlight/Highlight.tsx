@@ -64,12 +64,12 @@ export const Highlight = forwardRef<HTMLSpanElement, HighlightProps>(
     }, [children, highlight, caseSensitive]);
 
     return (
-      <span ref={ref} className={cn('zk-highlight', className)} {...props}>
+      <span ref={ref} className={cn('highlight', className)} {...props}>
         {chunks.map((chunk, index) =>
           chunk.highlighted ? (
             <HighlightComponent
               key={index}
-              className={cn('zk-highlight__mark', `zk-highlight__mark--${color}`)}
+              className={cn('highlight-mark', `highlight-mark--${color}`)}
               {...highlightProps}
             >
               {chunk.text}

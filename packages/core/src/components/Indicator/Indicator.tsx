@@ -81,12 +81,12 @@ export const Indicator = forwardRef<HTMLDivElement, IndicatorProps>(
     const indicatorElement = (
       <div
         className={cn(
-          'zk-indicator__badge',
-          `zk-indicator__badge--${color}`,
-          `zk-indicator__badge--${size}`,
-          processing && 'zk-indicator__badge--processing',
-          withBorder && 'zk-indicator__badge--bordered',
-          label && 'zk-indicator__badge--with-label'
+          'indicator-badge',
+          `indicator-badge--${color}`,
+          `indicator-badge--${size}`,
+          processing && 'indicator-badge--processing',
+          withBorder && 'indicator-badge--bordered',
+          label && 'indicator-badge--with-label'
         )}
         style={{
           ...getPositionStyles(),
@@ -94,7 +94,7 @@ export const Indicator = forwardRef<HTMLDivElement, IndicatorProps>(
         }}
       >
         {label}
-        {processing && <span className="zk-indicator__pulse" />}
+        {processing && <span className="indicator-pulse" />}
       </div>
     );
 
@@ -102,7 +102,7 @@ export const Indicator = forwardRef<HTMLDivElement, IndicatorProps>(
       return (
         <span
           ref={ref}
-          className={cn('zk-indicator', 'zk-indicator--inline', className)}
+          className={cn('indicator', 'indicator-inline', className)}
           style={style}
           {...props}
         >
@@ -115,7 +115,7 @@ export const Indicator = forwardRef<HTMLDivElement, IndicatorProps>(
     return (
       <div
         ref={ref}
-        className={cn('zk-indicator', className)}
+        className={cn('indicator', className)}
         style={style}
         {...props}
       >

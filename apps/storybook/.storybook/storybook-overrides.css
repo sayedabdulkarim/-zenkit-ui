@@ -500,102 +500,6 @@ body[data-theme="dark"] .sbdocs-wrapper button:not(.btn):not(.float-button):not(
 }
 
 /* ========================================
-   Preserve FloatButton Component Styles
-   ========================================
-   These must come LAST to override any other button rules */
-
-button.float-button,
-.float-button {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 40px !important;
-  height: 40px !important;
-  padding: 0 !important;
-  background-color: var(--bg-primary, #fff) !important;
-  border: none !important;
-  border-radius: 50% !important;
-  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05) !important;
-  cursor: pointer !important;
-  position: fixed !important;
-  color: var(--text-muted, #666) !important;
-  transition: all 0.3s ease !important;
-}
-
-.float-button:hover {
-  transform: scale(1.05) !important;
-}
-
-.float-button-square {
-  border-radius: 8px !important;
-}
-
-.float-button-primary {
-  background-color: var(--primary, #4F46E5) !important;
-  color: #fff !important;
-}
-
-/* When style prop sets position: relative (for inline display in docs) */
-.float-button[style*="relative"] {
-  position: relative !important;
-}
-
-.float-button-icon {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.float-button-badge {
-  position: absolute !important;
-  top: -4px !important;
-  right: -4px !important;
-  min-width: 18px !important;
-  height: 18px !important;
-  padding: 0 4px !important;
-  font-size: 12px !important;
-  line-height: 18px !important;
-  color: #fff !important;
-  background-color: #f5222d !important;
-  border-radius: 9px !important;
-  text-align: center !important;
-}
-
-/* FloatButton Group styles */
-.float-button-group {
-  position: fixed !important;
-  display: flex !important;
-  flex-direction: column-reverse !important;
-  align-items: center !important;
-  gap: 12px !important;
-}
-
-.float-button-group-bottom-right {
-  bottom: 24px !important;
-  right: 24px !important;
-}
-
-.float-button-group-items {
-  display: flex !important;
-  flex-direction: column-reverse !important;
-  gap: 12px !important;
-  opacity: 0 !important;
-  transform: translateY(20px) !important;
-  pointer-events: none !important;
-  transition: all 0.3s ease !important;
-}
-
-.float-button-group-open .float-button-group-items {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  pointer-events: auto !important;
-}
-
-.float-button-group-items .float-button {
-  position: relative !important;
-}
-
-/* ========================================
    Dark Mode for MDX Documentation Pages
    ======================================== */
 
@@ -686,15 +590,300 @@ button.float-button,
   border-color: #444 !important;
 }
 
-/* Dark mode for FloatButton */
-[data-theme="dark"] .float-button {
-  background-color: var(--bg-primary, #2a2a2a) !important;
-  color: var(--text-muted, #ccc) !important;
-  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.2), 0 3px 6px -4px rgba(0, 0, 0, 0.24), 0 9px 28px 8px rgba(0, 0, 0, 0.15) !important;
+/* ========================================
+   Override ZenKit Focus Styles for Storybook UI
+   ======================================== */
+
+/* Disable zenkit's global :focus-visible outline for Storybook UI elements */
+.sbdocs *:focus-visible,
+.sbdocs-wrapper *:focus-visible,
+.sb-show-main *:focus-visible,
+[class*="Canvas"]:focus-visible,
+[class*="Preview"]:focus-visible,
+.docs-story:focus-visible,
+.docs-story *:focus-visible:not(.btn):not(.form-control):not(.form-select):not(input):not(textarea):not(select):not(button):not(a),
+[class*="Story"]:focus-visible,
+[class*="story"]:focus-visible {
+  outline: none !important;
 }
 
-[data-theme="dark"] .float-button-primary {
-  background-color: var(--primary, #4F46E5) !important;
-  color: #fff !important;
+/* Keep focus styles for actual interactive components */
+.docs-story .btn:focus-visible,
+.docs-story button.btn:focus-visible,
+.docs-story input:focus-visible,
+.docs-story textarea:focus-visible,
+.docs-story select:focus-visible,
+.docs-story a:focus-visible,
+.docs-story [role="button"]:focus-visible {
+  outline: 2px solid var(--primary, #3b82f6) !important;
+  outline-offset: 2px !important;
 }
 
+/* Remove border/outline from story container wrappers */
+.docs-story,
+.docs-story > div,
+.docs-story > div > div,
+.docs-story div[data-theme],
+[class*="Canvas"],
+[class*="Preview"],
+[id*="story--"],
+[id*="story"],
+.sb-story,
+.sb-unstyled,
+.sb-unstyled > div {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove the inner story wrapper border (the blue rectangle around content) */
+.docs-story [data-theme],
+.docs-story > div > div,
+.sbdocs-preview > div > div,
+[class*="StoryWrapper"],
+[class*="storyWrapper"] {
+  border: none !important;
+  outline: none !important;
+}
+
+/* AGGRESSIVE: Remove ALL borders from story preview containers */
+.sbdocs-preview,
+.sbdocs-preview > *,
+.sbdocs-preview > * > *,
+.docs-story,
+.docs-story > *,
+.docs-story > * > *,
+[id^="story--"] > *,
+[id^="anchor--"] + * > *,
+[class*="css-"][class*="Preview"] *,
+[class*="css-"][class*="Canvas"] * {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Target the specific story canvas wrapper that Storybook 8 uses */
+.sb-bar + div,
+[class*="innerZoomElementWrapper"] > *,
+[id*="story"] > div > div {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Reset any box-related borders from zenkit-css in story area */
+.docs-story .box-border,
+.docs-story [class*="box-border"] {
+  border: none !important;
+}
+
+/* Override zenkit-css focus-visible for story containers */
+.docs-story div:focus-visible,
+.docs-story [data-theme]:focus-visible,
+.sbdocs-preview div:focus-visible {
+  outline: none !important;
+  border: none !important;
+}
+
+/* Ensure no card, box, or fieldset borders apply to story wrappers */
+.docs-story > div:not(.card):not(.box):not(.fieldset):not(.alert):not(.btn),
+.docs-story > div > div:not(.card):not(.box):not(.fieldset):not(.alert):not(.btn) {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Nuclear option: remove borders from ALL non-component elements in story area */
+.docs-story div[data-theme] {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Override Storybook Canvas border that may be using zenkit CSS variables */
+.sbdocs [class*="css-"] {
+  --primary: inherit;
+}
+
+/* Super specific: target Storybook 8 Canvas border wrapper */
+[class*="css-"][tabindex="0"],
+[class*="innerZoomElementWrapper"] {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Target any element using var(--primary) for border in story area */
+.docs-story *,
+.sbdocs-preview * {
+  border-color: transparent !important;
+}
+
+/* But restore borders for actual components that need them */
+.docs-story .btn,
+.docs-story .card,
+.docs-story .alert,
+.docs-story .badge,
+.docs-story .form-control,
+.docs-story .form-select,
+.docs-story input,
+.docs-story textarea,
+.docs-story select,
+.docs-story table,
+.docs-story th,
+.docs-story td {
+  border-color: revert !important;
+}
+
+/* Specifically target the story wrapper class */
+.sb-story-wrapper,
+.sb-story-wrapper[data-theme],
+div.sb-story-wrapper {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* ========================================
+   CRITICAL FIX: Target Storybook Canvas parent elements
+   ======================================== */
+
+/* Target ANY parent element of the story using :has() selector */
+div:has(> .docs-story),
+div:has(> .sb-story-wrapper),
+div:has(.docs-story),
+*:has(> .docs-story) {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Target Storybook's emotion-generated CSS classes for Canvas/Preview */
+[class^="css-"]:has(.docs-story),
+[class*=" css-"]:has(.docs-story) {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Override ALL borders in the entire preview section */
+.sbdocs-preview,
+.sbdocs-preview *,
+#storybook-preview-wrapper,
+#storybook-preview-wrapper *,
+#storybook-preview-iframe,
+.sb-show-main > div,
+.sb-show-main > div > div {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Target story container by ID pattern */
+[id^="anchor--"] ~ *,
+[id^="anchor--"] + div,
+[id^="anchor--"] + div > div {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Most aggressive: target by structure */
+.sbdocs-content > div > div,
+.sbdocs-wrapper > div > div > div {
+  border: none !important;
+  outline: none !important;
+}
+
+/* ========================================
+   NUCLEAR OPTION: Remove ALL borders from docs pages
+   Then whitelist only components that need them
+   ======================================== */
+
+/* Remove borders from EVERYTHING in docs */
+.sbdocs,
+.sbdocs *,
+.sbdocs-wrapper,
+.sbdocs-wrapper *,
+.sbdocs-content,
+.sbdocs-content *,
+.sbdocs-preview,
+.sbdocs-preview * {
+  border-style: none !important;
+  outline-style: none !important;
+}
+
+/* Restore borders for actual UI components that need them */
+.sbdocs .btn,
+.sbdocs .card,
+.sbdocs .alert,
+.sbdocs .badge,
+.sbdocs .form-control,
+.sbdocs .form-select,
+.sbdocs input,
+.sbdocs textarea,
+.sbdocs select,
+.sbdocs table,
+.sbdocs th,
+.sbdocs td,
+.sbdocs .chip,
+.sbdocs .tag,
+.sbdocs .avatar,
+.sbdocs .float-button,
+.sbdocs [class*="float-button"],
+.sbdocs .btn-group,
+.sbdocs .input-group,
+.sbdocs pre,
+.sbdocs code {
+  border-style: revert !important;
+}
+
+/* Restore Storybook UI elements that need borders */
+.sbdocs .docblock-source,
+.sbdocs .docblock-source pre,
+.sbdocs .docblock-argstable,
+.sbdocs .docblock-argstable th,
+.sbdocs .docblock-argstable td {
+  border-style: solid !important;
+}
+
+/* ========================================
+   CRITICAL FIX: Override global :focus-visible
+   ROOT CAUSE - zenkit-css line 53493:
+   :focus-visible { outline: 2px solid var(--primary); }
+   ======================================== */
+
+/* Override the global :focus-visible for ALL elements in Storybook */
+.sbdocs :focus-visible,
+.sbdocs *:focus-visible,
+.sbdocs-wrapper :focus-visible,
+.sbdocs-wrapper *:focus-visible,
+#storybook-docs :focus-visible,
+#storybook-docs *:focus-visible,
+.sb-show-main :focus-visible,
+.sb-show-main *:focus-visible {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-offset: 0 !important;
+}
+
+/* Target focusable elements (tabindex) */
+.sbdocs [tabindex]:focus-visible,
+.sbdocs [tabindex="0"]:focus-visible,
+.sbdocs-wrapper [tabindex]:focus-visible,
+[tabindex]:focus-visible:not(.btn):not(.form-control):not(button):not(a):not(input) {
+  outline: none !important;
+  outline-width: 0 !important;
+}
+
+/* Override :focus-visible at document level (highest specificity) */
+html body .sbdocs :focus-visible,
+html body .sbdocs-wrapper :focus-visible,
+html body #storybook-root :focus-visible,
+html body .docs-story :focus-visible {
+  outline: none !important;
+  border: none !important;
+}
+
+/* The actual element that likely has the border - Canvas preview wrapper */
+.sbdocs-preview > div:focus-visible,
+.docs-story > div:focus-visible,
+[class*="css-"]:focus-visible {
+  outline: none !important;
+  outline-style: none !important;
+}

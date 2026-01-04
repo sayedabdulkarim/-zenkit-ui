@@ -127,9 +127,9 @@ export const Sortable = forwardRef<HTMLDivElement, SortableProps<SortableItem>>(
       <div
         ref={setRefs}
         className={cn(
-          'zk-sortable',
-          `zk-sortable--${direction}`,
-          disabled && 'zk-sortable--disabled',
+          'sortable',
+          `sortable-${direction}`,
+          disabled && 'sortable-disabled',
           className
         )}
         style={{
@@ -147,9 +147,9 @@ export const Sortable = forwardRef<HTMLDivElement, SortableProps<SortableItem>>(
             <div
               key={item.id}
               className={cn(
-                'zk-sortable__item',
-                isDragging && 'zk-sortable__item--dragging',
-                isDragOver && 'zk-sortable__item--drag-over'
+                'sortable-item',
+                isDragging && 'sortable-item--dragging',
+                isDragOver && 'sortable-item--drag-over'
               )}
               style={{
                 transition: `transform ${animationDuration}ms ease`,
@@ -185,7 +185,7 @@ export const SortableHandle = forwardRef<HTMLDivElement, SortableHandleProps>(
     return (
       <div
         ref={ref}
-        className={cn('zk-sortable__handle', className)}
+        className={cn('sortable-handle', className)}
         {...dragHandleProps}
         {...props}
       >

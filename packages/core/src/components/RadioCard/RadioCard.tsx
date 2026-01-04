@@ -58,7 +58,7 @@ export const RadioCardGroup = ({
     <RadioCardGroupContext.Provider value={{ name, value, onChange, disabled, size }}>
       <div
         role="radiogroup"
-        className={cn('zk-radio-card-group', className)}
+        className={cn('radio-card-group', className)}
         style={{
           display: direction === 'horizontal' || columns ? 'grid' : 'flex',
           flexDirection: direction === 'vertical' && !columns ? 'column' : undefined,
@@ -129,20 +129,20 @@ export const RadioCard = forwardRef<HTMLInputElement, RadioCardProps>(
     const radioId = id || `radio-card-${Math.random().toString(36).substr(2, 9)}`;
 
     const sizeClasses = {
-      sm: 'zk-radio-card--sm',
-      md: 'zk-radio-card--md',
-      lg: 'zk-radio-card--lg',
+      sm: 'radio-card-sm',
+      md: 'radio-card-md',
+      lg: 'radio-card-lg',
     };
 
     return (
       <label
         htmlFor={radioId}
         className={cn(
-          'zk-radio-card',
+          'radio-card',
           sizeClasses[size],
-          withBorder && 'zk-radio-card--bordered',
-          isChecked && 'zk-radio-card--checked',
-          disabled && 'zk-radio-card--disabled',
+          withBorder && 'radio-card-bordered',
+          isChecked && 'radio-card-checked',
+          disabled && 'radio-card-disabled',
           className
         )}
       >
@@ -155,21 +155,21 @@ export const RadioCard = forwardRef<HTMLInputElement, RadioCardProps>(
           checked={isChecked}
           disabled={disabled}
           onChange={handleChange}
-          className="zk-radio-card__input"
+          className="radio-card-input"
           {...props}
         />
 
-        <div className="zk-radio-card__content">
-          {icon && <div className="zk-radio-card__icon">{icon}</div>}
-          <div className="zk-radio-card__body">
-            {title && <div className="zk-radio-card__title">{title}</div>}
-            {description && <div className="zk-radio-card__description">{description}</div>}
+        <div className="radio-card-content">
+          {icon && <div className="radio-card-icon">{icon}</div>}
+          <div className="radio-card-body">
+            {title && <div className="radio-card-title">{title}</div>}
+            {description && <div className="radio-card-description">{description}</div>}
             {children}
           </div>
         </div>
 
         {withIndicator && (
-          <div className={cn('zk-radio-card__indicator', isChecked && 'zk-radio-card__indicator--checked')}>
+          <div className={cn('radio-card-indicator', isChecked && 'radio-card-indicator--checked')}>
             {isChecked && (
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3">
                 <polyline points="20 6 9 17 4 12" />

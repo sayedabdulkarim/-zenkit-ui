@@ -44,15 +44,15 @@ export const LoadingOverlay = forwardRef<HTMLDivElement, LoadingOverlayProps>(
     ref
   ) => {
     const defaultLoader = (
-      <div className={cn('zk-loading-overlay__spinner', `zk-loading-overlay__spinner--${loaderSize}`)}>
-        <svg viewBox="0 0 50 50" className="zk-loading-overlay__spinner-svg">
+      <div className={cn('loading-overlay-spinner', `loading-overlay-spinner-${loaderSize}`)}>
+        <svg viewBox="0 0 50 50" className="loading-overlay-spinner-svg">
           <circle
             cx="25"
             cy="25"
             r="20"
             fill="none"
             strokeWidth="4"
-            className="zk-loading-overlay__spinner-circle"
+            className="loading-overlay-spinner-circle"
           />
         </svg>
       </div>
@@ -62,31 +62,31 @@ export const LoadingOverlay = forwardRef<HTMLDivElement, LoadingOverlayProps>(
       <div
         ref={ref}
         className={cn(
-          'zk-loading-overlay',
-          visible && 'zk-loading-overlay--visible',
-          fullscreen && 'zk-loading-overlay--fullscreen',
+          'loading-overlay-container',
           className
         )}
         style={{
-          '--loading-overlay-z-index': zIndex,
-          '--loading-overlay-opacity': overlayOpacity,
-          '--loading-overlay-blur': `${blur}px`,
-          '--loading-overlay-transition': `${transitionDuration}ms`,
+          '--zk-loading-overlay-z-index': zIndex,
           ...style,
         } as React.CSSProperties}
         {...props}
       >
         {children}
-        {visible && (
-          <div className="zk-loading-overlay__backdrop">
-            <div className="zk-loading-overlay__content">
-              {loader || defaultLoader}
-              {loaderText && (
-                <div className="zk-loading-overlay__text">{loaderText}</div>
-              )}
-            </div>
+        <div
+          className={cn(
+            'loading-overlay',
+            visible && 'loading-overlay-visible',
+            fullscreen && 'loading-overlay-fixed',
+            blur > 0 && 'loading-overlay-blur'
+          )}
+        >
+          <div className="loading-overlay-content">
+            {loader || defaultLoader}
+            {loaderText && (
+              <div className="loading-overlay-text">{loaderText}</div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     );
   }

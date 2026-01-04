@@ -89,11 +89,11 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
     return (
       <div
         className={cn(
-          'zk-file-input',
-          `zk-file-input--${size}`,
-          `zk-file-input--${variant}`,
-          error && 'zk-file-input--error',
-          disabled && 'zk-file-input--disabled',
+          'file-input',
+          `file-input-${size}`,
+          `file-input-${variant}`,
+          error && 'file-input-error',
+          disabled && 'file-input-disabled',
           className
         )}
         onClick={disabled ? undefined : handleClick}
@@ -108,28 +108,28 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
             }
           }}
           type="file"
-          className="zk-file-input__input"
+          className="file-input-input"
           onChange={handleChange}
           multiple={multiple}
           accept={accept}
           disabled={disabled}
           {...props}
         />
-        <span className={cn('zk-file-input__text', !hasFiles && 'zk-file-input__text--placeholder')}>
+        <span className={cn('file-input-text', !hasFiles && 'file-input-text--placeholder')}>
           {getDisplayText()}
         </span>
-        <div className="zk-file-input__actions">
+        <div className="file-input-actions">
           {hasFiles && clearable && !disabled && (
             <button
               type="button"
-              className="zk-file-input__clear"
+              className="file-input-clear"
               onClick={handleClear}
               aria-label="Clear"
             >
               ✕
             </button>
           )}
-          <span className="zk-file-input__button">{buttonLabel}</span>
+          <span className="file-input-button">{buttonLabel}</span>
         </div>
       </div>
     );

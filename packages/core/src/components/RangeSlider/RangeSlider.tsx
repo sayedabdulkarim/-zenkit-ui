@@ -133,14 +133,14 @@ export const RangeSlider = forwardRef<HTMLDivElement, RangeSliderProps>(
         : marks;
 
       return (
-        <div className="zk-range-slider__marks">
+        <div className="range-slider-marks">
           {markArray.map((mark) => (
             <div
               key={mark.value}
-              className="zk-range-slider__mark"
+              className="range-slider-mark"
               style={{ left: `${getPercentage(mark.value)}%` }}
             >
-              {mark.label && <span className="zk-range-slider__mark-label">{mark.label}</span>}
+              {mark.label && <span className="range-slider-mark-label">{mark.label}</span>}
             </div>
           ))}
         </div>
@@ -151,27 +151,27 @@ export const RangeSlider = forwardRef<HTMLDivElement, RangeSliderProps>(
       <div
         ref={ref}
         className={cn(
-          'zk-range-slider',
-          `zk-range-slider--${size}`,
-          `zk-range-slider--${color}`,
-          `zk-range-slider--${orientation}`,
-          disabled && 'zk-range-slider--disabled',
+          'range-slider',
+          `range-slider-${size}`,
+          `range-slider-${color}`,
+          `range-slider-${orientation}`,
+          disabled && 'range-slider-disabled',
           className
         )}
         {...props}
       >
-        {label && <div className="zk-range-slider__label">{label}</div>}
-        <div className="zk-range-slider__container">
-          <div ref={trackRef} className="zk-range-slider__track">
+        {label && <div className="range-slider-label">{label}</div>}
+        <div className="range-slider-container">
+          <div ref={trackRef} className="range-slider-track">
             <div
-              className="zk-range-slider__range"
+              className="range-slider-range"
               style={{
                 left: `${startPercent}%`,
                 width: `${endPercent - startPercent}%`,
               }}
             />
             <div
-              className={cn('zk-range-slider__thumb', activeHandle === 'start' && 'zk-range-slider__thumb--active')}
+              className={cn('range-slider-thumb', activeHandle === 'start' && 'range-slider-thumb--active')}
               style={{ left: `${startPercent}%` }}
               onMouseDown={handleMouseDown('start')}
               role="slider"
@@ -181,11 +181,11 @@ export const RangeSlider = forwardRef<HTMLDivElement, RangeSliderProps>(
               tabIndex={disabled ? -1 : 0}
             >
               {showTooltip && (
-                <div className="zk-range-slider__tooltip">{currentValue[0]}</div>
+                <div className="range-slider-tooltip">{currentValue[0]}</div>
               )}
             </div>
             <div
-              className={cn('zk-range-slider__thumb', activeHandle === 'end' && 'zk-range-slider__thumb--active')}
+              className={cn('range-slider-thumb', activeHandle === 'end' && 'range-slider-thumb--active')}
               style={{ left: `${endPercent}%` }}
               onMouseDown={handleMouseDown('end')}
               role="slider"
@@ -195,7 +195,7 @@ export const RangeSlider = forwardRef<HTMLDivElement, RangeSliderProps>(
               tabIndex={disabled ? -1 : 0}
             >
               {showTooltip && (
-                <div className="zk-range-slider__tooltip">{currentValue[1]}</div>
+                <div className="range-slider-tooltip">{currentValue[1]}</div>
               )}
             </div>
           </div>

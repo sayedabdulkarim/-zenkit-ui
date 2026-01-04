@@ -88,13 +88,13 @@ export const YearPicker = forwardRef<HTMLInputElement, YearPickerProps>(
     const rangeEnd = Math.min(startYear + yearsPerPage - 1, maxYear);
 
     return (
-      <div ref={containerRef} className={cn('zk-year-picker', `zk-year-picker--${size}`, className)}>
+      <div ref={containerRef} className={cn('year-picker', `year-picker-${size}`, className)}>
         <div
           className={cn(
-            'zk-year-picker__input',
-            error && 'zk-year-picker__input--error',
-            disabled && 'zk-year-picker__input--disabled',
-            open && 'zk-year-picker__input--open'
+            'year-picker-input',
+            error && 'year-picker-input--error',
+            disabled && 'year-picker-input--disabled',
+            open && 'year-picker-input--open'
           )}
           onClick={() => !disabled && setOpen(!open)}
         >
@@ -105,18 +105,18 @@ export const YearPicker = forwardRef<HTMLInputElement, YearPickerProps>(
             disabled={disabled}
             placeholder={placeholder}
             value={value?.toString() || ''}
-            className="zk-year-picker__field"
+            className="year-picker-field"
             {...props}
           />
-          <div className="zk-year-picker__icons">
+          <div className="year-picker-icons">
             {clearable && value && !disabled && (
-              <button type="button" className="zk-year-picker__clear" onClick={handleClear}>
+              <button type="button" className="year-picker-clear" onClick={handleClear}>
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
                   <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
             )}
-            <svg className="zk-year-picker__icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
+            <svg className="year-picker-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
               <line x1="16" y1="2" x2="16" y2="6" />
               <line x1="8" y1="2" x2="8" y2="6" />
@@ -126,23 +126,23 @@ export const YearPicker = forwardRef<HTMLInputElement, YearPickerProps>(
         </div>
 
         {open && (
-          <div className="zk-year-picker__dropdown">
-            <div className="zk-year-picker__header">
+          <div className="year-picker-dropdown">
+            <div className="year-picker-header">
               <button
                 type="button"
                 onClick={() => navigateYears(-1)}
-                className="zk-year-picker__nav"
+                className="year-picker-nav"
                 disabled={startYear <= minYear}
               >
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
                   <polyline points="15 18 9 12 15 6" />
                 </svg>
               </button>
-              <span className="zk-year-picker__title">{rangeStart} - {rangeEnd}</span>
+              <span className="year-picker-title">{rangeStart} - {rangeEnd}</span>
               <button
                 type="button"
                 onClick={() => navigateYears(1)}
-                className="zk-year-picker__nav"
+                className="year-picker-nav"
                 disabled={startYear + yearsPerPage > maxYear}
               >
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
@@ -150,15 +150,15 @@ export const YearPicker = forwardRef<HTMLInputElement, YearPickerProps>(
                 </svg>
               </button>
             </div>
-            <div className="zk-year-picker__grid">
+            <div className="year-picker-grid">
               {years.map(year => (
                 <button
                   key={year}
                   type="button"
                   className={cn(
-                    'zk-year-picker__year',
-                    value === year && 'zk-year-picker__year--selected',
-                    year === currentYear && 'zk-year-picker__year--current'
+                    'year-picker-year',
+                    value === year && 'year-picker-year--selected',
+                    year === currentYear && 'year-picker-year--current'
                   )}
                   onClick={() => handleSelect(year)}
                 >

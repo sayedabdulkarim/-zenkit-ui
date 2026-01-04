@@ -1,7 +1,7 @@
 {
-  "name": "@zenkit-ui/core",
+  "name": "zenkit-ui",
   "version": "0.1.0",
-  "description": "ZenKit UI Core Components - A modern React component library",
+  "description": "ZenKit UI - A modern React component library built on zenkit-css",
   "author": "Sayed Abdul Karim",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -78,7 +78,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sayedabdulkarim/zenkit-ui",
-    "directory": "packages/core"
+    "url": "https://github.com/sayedabdulkarim/zenkit-ui"
+  },
+  "homepage": "https://github.com/sayedabdulkarim/zenkit-ui#readme",
+  "bugs": {
+    "url": "https://github.com/sayedabdulkarim/zenkit-ui/issues"
   }
 }

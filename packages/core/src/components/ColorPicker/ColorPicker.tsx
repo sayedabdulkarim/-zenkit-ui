@@ -80,48 +80,48 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
     };
 
     return (
-      <div ref={containerRef} className={cn('color-picker', `color-picker-${size}`, className)} {...props}>
+      <div ref={containerRef} className={cn('colorpicker', `colorpicker-${size}`, className)} {...props}>
         <div
           ref={ref}
           className={cn(
-            'color-picker-trigger',
-            disabled && 'color-picker-disabled',
-            open && 'color-picker-open'
+            'colorpicker-trigger',
+            disabled && 'colorpicker-disabled',
+            open && 'colorpicker-open'
           )}
           onClick={() => !disabled && setOpen(!open)}
         >
-          <div className="color-picker-swatch" style={{ backgroundColor: value }} />
+          <div className="colorpicker-swatch" style={{ backgroundColor: value }} />
           <input
             type="text"
             value={inputValue}
             onChange={handleInputChange}
             disabled={disabled}
-            className="color-picker-input"
+            className="colorpicker-input"
             onClick={(e) => e.stopPropagation()}
           />
         </div>
 
         {open && (
-          <div className="color-picker-dropdown">
-            <div className="color-picker-native-wrapper">
+          <div className="colorpicker-dropdown">
+            <div className="colorpicker-native-wrapper">
               <input
                 type="color"
                 value={value}
                 onChange={handleNativeChange}
-                className="color-picker-native"
+                className="colorpicker-native"
               />
-              <div className="color-picker-gradient" style={{ backgroundColor: value }} />
+              <div className="colorpicker-gradient" style={{ backgroundColor: value }} />
             </div>
 
             {presets.length > 0 && (
-              <div className="color-picker-presets">
+              <div className="colorpicker-presets">
                 {presets.map((color) => (
                   <button
                     key={color}
                     type="button"
                     className={cn(
-                      'color-picker-preset',
-                      value === color && 'color-picker-preset-selected'
+                      'colorpicker-preset',
+                      value === color && 'colorpicker-preset-selected'
                     )}
                     style={{ backgroundColor: color }}
                     onClick={() => handlePresetClick(color)}

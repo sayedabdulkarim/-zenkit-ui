@@ -64,17 +64,17 @@ export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
     };
 
     return (
-      <div className={cn('zk-nav-link-wrapper', hasChildren && opened && 'zk-nav-link-wrapper--opened')}>
+      <div className={cn('nav-link-wrapper', hasChildren && opened && 'nav-link-wrapper-opened')}>
         <Component
           ref={ref}
           className={cn(
-            'zk-nav-link',
-            `zk-nav-link--${variant}`,
-            `zk-nav-link--${color}`,
-            active && 'zk-nav-link--active',
-            disabled && 'zk-nav-link--disabled',
-            hasChildren && 'zk-nav-link--has-children',
-            !noActiveIndicator && active && 'zk-nav-link--with-indicator',
+            'nav-link',
+            `nav-link-${variant}`,
+            `nav-link-${color}`,
+            active && 'nav-link-active',
+            disabled && 'nav-link-disabled',
+            hasChildren && 'nav-link-has-children',
+            !noActiveIndicator && active && 'nav-link-with-indicator',
             className
           )}
           onClick={handleClick}
@@ -83,19 +83,19 @@ export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
           {...props}
         >
           {leftSection && (
-            <span className="zk-nav-link__left-section">{leftSection}</span>
+            <span className="nav-link-left-section">{leftSection}</span>
           )}
-          <div className="zk-nav-link__body">
-            {label && <span className="zk-nav-link__label">{label}</span>}
+          <div className="nav-link-body">
+            {label && <span className="nav-link-label">{label}</span>}
             {description && (
-              <span className="zk-nav-link__description">{description}</span>
+              <span className="nav-link-description">{description}</span>
             )}
           </div>
           {(rightSection || hasChildren) && (
-            <span className="zk-nav-link__right-section">
+            <span className="nav-link-right-section">
               {rightSection}
               {hasChildren && (
-                <span className={cn('zk-nav-link__chevron', opened && 'zk-nav-link__chevron--opened')}>
+                <span className={cn('nav-link-chevron', opened && 'nav-link-chevron--opened')}>
                   ▼
                 </span>
               )}
@@ -103,7 +103,7 @@ export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
           )}
         </Component>
         {hasChildren && opened && (
-          <div className="zk-nav-link__children">{children}</div>
+          <div className="nav-link-children">{children}</div>
         )}
       </div>
     );

@@ -68,7 +68,7 @@ export const RingProgress = forwardRef<HTMLDivElement, RingProgressProps>(
               strokeDasharray={`${dashLength} ${circumference - dashLength}`}
               strokeDashoffset={dashOffset}
               strokeLinecap={roundCaps ? 'round' : 'butt'}
-              className="zk-ring-progress__section"
+              className="ring-progress-section"
               style={{ transform: 'rotate(-90deg)', transformOrigin: 'center' }}
             >
               {section.tooltip && <title>{section.tooltip}</title>}
@@ -91,7 +91,7 @@ export const RingProgress = forwardRef<HTMLDivElement, RingProgressProps>(
           strokeDasharray={`${dashLength} ${circumference - dashLength}`}
           strokeDashoffset={0}
           strokeLinecap={roundCaps ? 'round' : 'butt'}
-          className="zk-ring-progress__progress"
+          className="ring-progress-section"
           style={{ transform: 'rotate(-90deg)', transformOrigin: 'center' }}
         />
       );
@@ -100,7 +100,7 @@ export const RingProgress = forwardRef<HTMLDivElement, RingProgressProps>(
     return (
       <div
         ref={ref}
-        className={cn('zk-ring-progress', className)}
+        className={cn('ring-progress', className)}
         style={{
           width: size,
           height: size,
@@ -108,7 +108,7 @@ export const RingProgress = forwardRef<HTMLDivElement, RingProgressProps>(
         }}
         {...props}
       >
-        <svg width={size} height={size} className="zk-ring-progress__svg">
+        <svg width={size} height={size} className="ring-progress-svg">
           {/* Background ring */}
           <circle
             cx={size / 2}
@@ -117,13 +117,13 @@ export const RingProgress = forwardRef<HTMLDivElement, RingProgressProps>(
             fill="none"
             stroke={rootColor}
             strokeWidth={thickness}
-            className="zk-ring-progress__root"
+            className="ring-progress-track"
           />
           {/* Progress sections */}
           {renderSections()}
         </svg>
         {label && (
-          <div className="zk-ring-progress__label">
+          <div className="ring-progress-label">
             {label}
           </div>
         )}

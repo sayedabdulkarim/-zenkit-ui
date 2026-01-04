@@ -78,12 +78,12 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
         <div
           ref={ref}
           className={cn(
-            'zk-app-shell',
-            `zk-app-shell--${layout}`,
-            `zk-app-shell--padding-${padding}`,
-            fixedHeader && 'zk-app-shell--fixed-header',
-            navbarCollapsed && 'zk-app-shell--navbar-collapsed',
-            asideCollapsed && 'zk-app-shell--aside-collapsed',
+            'app-shell',
+            `app-shell-${layout}`,
+            `app-shell-padding-${padding}`,
+            fixedHeader && 'app-shell-fixed-header',
+            navbarCollapsed && 'app-shell-navbar-collapsed',
+            asideCollapsed && 'app-shell-aside-collapsed',
             className
           )}
           style={{
@@ -109,7 +109,7 @@ export interface AppShellHeaderProps extends React.HTMLAttributes<HTMLElement> {
 
 export const AppShellHeader = forwardRef<HTMLElement, AppShellHeaderProps>(
   ({ className, ...props }, ref) => (
-    <header ref={ref} className={cn('zk-app-shell__header', className)} {...props} />
+    <header ref={ref} className={cn('app-shell-header', className)} {...props} />
   )
 );
 
@@ -124,7 +124,7 @@ export const AppShellNavbar = forwardRef<HTMLElement, AppShellNavbarProps>(
   ({ className, collapsedWidth = 60, style, ...props }, ref) => (
     <nav
       ref={ref}
-      className={cn('zk-app-shell__navbar', className)}
+      className={cn('app-shell-navbar', className)}
       style={{
         '--app-shell-navbar-collapsed-width': typeof collapsedWidth === 'number' ? `${collapsedWidth}px` : collapsedWidth,
         ...style,
@@ -140,7 +140,7 @@ export interface AppShellMainProps extends React.HTMLAttributes<HTMLElement> {}
 
 export const AppShellMain = forwardRef<HTMLElement, AppShellMainProps>(
   ({ className, ...props }, ref) => (
-    <main ref={ref} className={cn('zk-app-shell__main', className)} {...props} />
+    <main ref={ref} className={cn('app-shell-main', className)} {...props} />
   )
 );
 
@@ -150,7 +150,7 @@ export interface AppShellAsideProps extends React.HTMLAttributes<HTMLElement> {}
 
 export const AppShellAside = forwardRef<HTMLElement, AppShellAsideProps>(
   ({ className, ...props }, ref) => (
-    <aside ref={ref} className={cn('zk-app-shell__aside', className)} {...props} />
+    <aside ref={ref} className={cn('app-shell-aside', className)} {...props} />
   )
 );
 
@@ -160,7 +160,7 @@ export interface AppShellFooterProps extends React.HTMLAttributes<HTMLElement> {
 
 export const AppShellFooter = forwardRef<HTMLElement, AppShellFooterProps>(
   ({ className, ...props }, ref) => (
-    <footer ref={ref} className={cn('zk-app-shell__footer', className)} {...props} />
+    <footer ref={ref} className={cn('app-shell-footer', className)} {...props} />
   )
 );
 

@@ -178,13 +178,13 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
     const minutes = Array.from({ length: 60 / timeStep }, (_, i) => i * timeStep);
 
     return (
-      <div ref={containerRef} className={cn('zk-datetime-picker', `zk-datetime-picker--${size}`, className)}>
+      <div ref={containerRef} className={cn('datetime-picker', `datetime-picker-${size}`, className)}>
         <div
           className={cn(
-            'zk-datetime-picker__input',
-            error && 'zk-datetime-picker__input--error',
-            disabled && 'zk-datetime-picker__input--disabled',
-            open && 'zk-datetime-picker__input--open'
+            'datetime-picker-input',
+            error && 'datetime-picker-input--error',
+            disabled && 'datetime-picker-input--disabled',
+            open && 'datetime-picker-input--open'
           )}
           onClick={() => !disabled && setOpen(!open)}
         >
@@ -195,18 +195,18 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
             disabled={disabled}
             placeholder={placeholder}
             value={value ? formatDateTime(value, format, hourFormat) : ''}
-            className="zk-datetime-picker__field"
+            className="datetime-picker-field"
             {...props}
           />
-          <div className="zk-datetime-picker__icons">
+          <div className="datetime-picker-icons">
             {clearable && value && !disabled && (
-              <button type="button" className="zk-datetime-picker__clear" onClick={handleClear}>
+              <button type="button" className="datetime-picker-clear" onClick={handleClear}>
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
                   <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
             )}
-            <svg className="zk-datetime-picker__icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
+            <svg className="datetime-picker-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
               <line x1="16" y1="2" x2="16" y2="6" />
               <line x1="8" y1="2" x2="8" y2="6" />
@@ -219,37 +219,37 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
         </div>
 
         {open && (
-          <div className="zk-datetime-picker__dropdown">
-            <div className="zk-datetime-picker__calendar">
-              <div className="zk-datetime-picker__header">
-                <button type="button" onClick={() => navigateMonth(-1)} className="zk-datetime-picker__nav">
+          <div className="datetime-picker-dropdown">
+            <div className="datetime-picker-calendar">
+              <div className="datetime-picker-header">
+                <button type="button" onClick={() => navigateMonth(-1)} className="datetime-picker-nav">
                   <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
                     <polyline points="15 18 9 12 15 6" />
                   </svg>
                 </button>
-                <span className="zk-datetime-picker__title">
+                <span className="datetime-picker-title">
                   {MONTHS[viewDate.getMonth()]} {viewDate.getFullYear()}
                 </span>
-                <button type="button" onClick={() => navigateMonth(1)} className="zk-datetime-picker__nav">
+                <button type="button" onClick={() => navigateMonth(1)} className="datetime-picker-nav">
                   <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
                     <polyline points="9 18 15 12 9 6" />
                   </svg>
                 </button>
               </div>
-              <div className="zk-datetime-picker__days-header">
-                {DAYS.map(day => <div key={day} className="zk-datetime-picker__day-name">{day}</div>)}
+              <div className="datetime-picker-days-header">
+                {DAYS.map(day => <div key={day} className="datetime-picker-day-name">{day}</div>)}
               </div>
-              <div className="zk-datetime-picker__days">
+              <div className="datetime-picker-days">
                 {getDaysInMonth(viewDate).map(({ date, isCurrentMonth }, i) => (
                   <button
                     key={i}
                     type="button"
                     className={cn(
-                      'zk-datetime-picker__day',
-                      !isCurrentMonth && 'zk-datetime-picker__day--outside',
-                      isSelected(date) && 'zk-datetime-picker__day--selected',
-                      isToday(date) && 'zk-datetime-picker__day--today',
-                      isDisabled(date) && 'zk-datetime-picker__day--disabled'
+                      'datetime-picker-day',
+                      !isCurrentMonth && 'datetime-picker-day--outside',
+                      isSelected(date) && 'datetime-picker-day--selected',
+                      isToday(date) && 'datetime-picker-day--today',
+                      isDisabled(date) && 'datetime-picker-day--disabled'
                     )}
                     onClick={() => handleSelect(date)}
                     disabled={isDisabled(date)}
@@ -260,11 +260,11 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
               </div>
             </div>
 
-            <div className="zk-datetime-picker__time">
-              <div className="zk-datetime-picker__time-label">Time</div>
-              <div className="zk-datetime-picker__time-selectors">
+            <div className="datetime-picker-time">
+              <div className="datetime-picker-time-label">Time</div>
+              <div className="datetime-picker-time-selectors">
                 <select
-                  className="zk-datetime-picker__time-select"
+                  className="datetime-picker-time-select"
                   value={selectedHour}
                   onChange={(e) => handleTimeChange(Number(e.target.value), selectedMinute)}
                 >
@@ -274,9 +274,9 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
                     </option>
                   ))}
                 </select>
-                <span className="zk-datetime-picker__time-separator">:</span>
+                <span className="datetime-picker-time-separator">:</span>
                 <select
-                  className="zk-datetime-picker__time-select"
+                  className="datetime-picker-time-select"
                   value={selectedMinute}
                   onChange={(e) => handleTimeChange(selectedHour, Number(e.target.value))}
                 >
@@ -286,7 +286,7 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
                 </select>
                 {hourFormat === '12' && (
                   <select
-                    className="zk-datetime-picker__time-select"
+                    className="datetime-picker-time-select"
                     value={selectedHour >= 12 ? 'PM' : 'AM'}
                     onChange={(e) => {
                       const isPM = e.target.value === 'PM';

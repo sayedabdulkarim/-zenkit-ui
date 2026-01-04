@@ -71,6 +71,36 @@ const withTheme: Decorator = (Story, context) => {
   );
 };
 
+// Footer component
+const Footer: React.FC<{ isDark: boolean }> = ({ isDark }) => (
+  <footer
+    style={{
+      marginTop: '4rem',
+      paddingTop: '2rem',
+      borderTop: `1px solid ${isDark ? '#333' : '#e0e0e0'}`,
+      textAlign: 'center',
+      color: isDark ? '#999' : '#666',
+      fontSize: '14px',
+    }}
+  >
+    <div style={{ marginBottom: '0.5rem' }}>
+      Made with <span style={{ color: '#e25555' }}>❤</span> by
+    </div>
+    <a
+      href="https://github.com/sayedabdulkarim"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        color: isDark ? '#6ea8fe' : '#1890ff',
+        textDecoration: 'none',
+        fontWeight: 500,
+      }}
+    >
+      Sayed Abdul Karim
+    </a>
+  </footer>
+);
+
 // Custom Docs Container for dark mode support with live updates
 const ThemedDocsContainer: React.FC<any> = ({ children, context, ...props }) => {
   const [theme, setTheme] = useState(() => getThemeFromContext(context));
@@ -166,6 +196,7 @@ const ThemedDocsContainer: React.FC<any> = ({ children, context, ...props }) => 
     <DocsContainer context={context} theme={isDark ? themes.dark : themes.light} {...props}>
       <div data-theme={theme} style={{ minHeight: '100%' }}>
         {children}
+        <Footer isDark={isDark} />
       </div>
     </DocsContainer>
   );

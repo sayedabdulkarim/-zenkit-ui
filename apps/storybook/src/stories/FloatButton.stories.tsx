@@ -53,9 +53,15 @@ export const Shapes: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div style={{ height: '300px', position: 'relative', display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
-      <FloatButton icon={<PlusIcon />} variant="default" style={{ position: 'relative' }} />
-      <FloatButton icon={<PlusIcon />} variant="primary" style={{ position: 'relative' }} />
+    <div style={{ height: '300px', position: 'relative', display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+        <FloatButton icon={<PlusIcon />} variant="default" style={{ position: 'relative' }} />
+        <span style={{ fontSize: '12px', color: '#666' }}>Default</span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+        <FloatButton icon={<PlusIcon />} variant="primary" style={{ position: 'relative' }} />
+        <span style={{ fontSize: '12px', color: '#666' }}>Primary</span>
+      </div>
     </div>
   ),
 };

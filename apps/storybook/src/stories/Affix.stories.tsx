@@ -19,7 +19,7 @@ export const Default: Story = {
       <p>Scroll down to see the affixed button stick to the top</p>
       <div style={{ marginTop: '200px' }}>
         <Affix offsetTop={20}>
-          <Button variant="primary">Affixed to Top</Button>
+          <Button colorScheme="primary">Affixed to Top</Button>
         </Affix>
       </div>
       <div style={{ height: '1000px', marginTop: '20px', background: '#f5f5f5', padding: '1rem' }}>
@@ -53,7 +53,7 @@ export const OffsetBottom: Story = {
         <p>Scroll content...</p>
       </div>
       <Affix offsetBottom={20}>
-        <Button variant="primary">Affixed to Bottom</Button>
+        <Button colorScheme="primary">Affixed to Bottom</Button>
       </Affix>
       <div style={{ height: '500px', marginTop: '20px' }}>
         <p>More content below...</p>
@@ -95,7 +95,7 @@ export const InContainer: Story = {
           <p>Scroll within this container...</p>
         </div>
         <Affix offsetTop={10}>
-          <Button variant="primary">Affixed in Container</Button>
+          <Button colorScheme="primary">Affixed in Container</Button>
         </Affix>
         <div style={{ height: '600px', padding: '1rem' }}>
           <p>More scrollable content...</p>
@@ -116,7 +116,7 @@ export const Multiple: Story = {
       </div>
       <div style={{ marginTop: '200px' }}>
         <Affix offsetTop={70}>
-          <Button variant="secondary">Second (70px)</Button>
+          <Button colorScheme="secondary">Second (70px)</Button>
         </Affix>
       </div>
       <div style={{ marginTop: '200px' }}>

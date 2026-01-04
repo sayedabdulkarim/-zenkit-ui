@@ -37,7 +37,7 @@ export const CustomTheme: Story = {
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <Button variant="primary">Themed Button</Button>
+        <Button colorScheme="primary">Themed Button</Button>
         <Input placeholder="Themed Input" />
       </div>
     </ConfigProvider>
@@ -77,11 +77,11 @@ export const Nested: Story = {
     <ConfigProvider theme={{ primaryColor: '#1890ff' }}>
       <div style={{ padding: '1rem', border: '1px solid #e0e0e0', borderRadius: '8px' }}>
         <h4>Outer Config (Blue)</h4>
-        <Button variant="primary">Blue Button</Button>
+        <Button colorScheme="primary">Blue Button</Button>
         <ConfigProvider theme={{ primaryColor: '#52c41a' }}>
           <div style={{ marginTop: '1rem', padding: '1rem', background: '#f5f5f5', borderRadius: '8px' }}>
             <h4>Inner Config (Green)</h4>
-            <Button variant="primary">Green Button</Button>
+            <Button colorScheme="primary">Green Button</Button>
           </div>
         </ConfigProvider>
       </div>

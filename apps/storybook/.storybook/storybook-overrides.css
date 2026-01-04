@@ -145,19 +145,20 @@ pre.prismjs,
 }
 
 /* Prevent zenkit button styles from applying to Storybook controls */
-.sbdocs button:not(.btn),
-.sbdocs-wrapper button:not(.btn),
-[class*="argstable"] button,
-[class*="ArgTable"] button,
-[class*="Control"] button:not(.btn),
-table button:not(.btn) {
+/* Exclude component buttons like .float-button, .btn, etc. */
+.sbdocs button:not(.btn):not(.float-button):not([class*="float-button"]),
+.sbdocs-wrapper button:not(.btn):not(.float-button):not([class*="float-button"]),
+[class*="argstable"] button:not(.float-button):not([class*="float-button"]),
+[class*="ArgTable"] button:not(.float-button):not([class*="float-button"]),
+[class*="Control"] button:not(.btn):not(.float-button):not([class*="float-button"]),
+table button:not(.btn):not(.float-button):not([class*="float-button"]) {
   all: revert !important;
   font-family: inherit !important;
 }
 
 /* Then re-apply our styles */
-.sbdocs button:not(.btn),
-[class*="Control"] button:not(.btn) {
+.sbdocs button:not(.btn):not(.float-button):not([class*="float-button"]),
+[class*="Control"] button:not(.btn):not(.float-button):not([class*="float-button"]) {
   padding: 4px 12px !important;
   font-size: 12px !important;
   cursor: pointer !important;
@@ -165,11 +166,12 @@ table button:not(.btn) {
 }
 
 /* Dark mode button styles - MUST come after revert */
-html[data-theme="dark"] .sbdocs button:not(.btn),
-html[data-theme="dark"] .sbdocs-wrapper button:not(.btn),
-body[data-theme="dark"] .sbdocs button:not(.btn),
-body[data-theme="dark"] .sbdocs-wrapper button:not(.btn),
-[data-theme="dark"] .sbdocs button:not(.btn) {
+/* Exclude component buttons */
+html[data-theme="dark"] .sbdocs button:not(.btn):not(.float-button):not([class*="float-button"]),
+html[data-theme="dark"] .sbdocs-wrapper button:not(.btn):not(.float-button):not([class*="float-button"]),
+body[data-theme="dark"] .sbdocs button:not(.btn):not(.float-button):not([class*="float-button"]),
+body[data-theme="dark"] .sbdocs-wrapper button:not(.btn):not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] .sbdocs button:not(.btn):not(.float-button):not([class*="float-button"]) {
   background-color: #444 !important;
   color: #fff !important;
   border: 1px solid #666 !important;
@@ -283,38 +285,13 @@ body[data-theme="dark"] .sbdocs-wrapper button:not(.btn),
   border-radius: 4px !important;
 }
 
-/* Copy button in dark mode - force dark background with white text */
-[data-theme="dark"] button {
-  background-color: #333 !important;
-  color: #fff !important;
-  border-color: #555 !important;
-}
-
-/* More specific for Copy button */
-html[data-theme="dark"] button,
-body[data-theme="dark"] button,
-[data-theme="dark"] .sbdocs button,
-[data-theme="dark"] .sbdocs-wrapper button,
-[data-theme="dark"] [class*="Source"] button,
-[data-theme="dark"] [class*="docblock"] button {
+/* Copy button in dark mode - only target Storybook UI buttons, not component buttons */
+[data-theme="dark"] [class*="Source"] button:not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] [class*="docblock"] button:not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] [class*="Toolbar"] button:not(.float-button):not([class*="float-button"]) {
   background-color: #333 !important;
   color: #ffffff !important;
   border: 1px solid #555 !important;
-}
-
-/* Nuclear option - target button via parent dark theme */
-.sbdocs[data-theme="dark"] button,
-.sbdocs-wrapper[data-theme="dark"] button,
-div[data-theme="dark"] button {
-  background-color: #444 !important;
-  color: #fff !important;
-  border-color: #666 !important;
-}
-
-/* Target via CSS custom property fallback */
-[data-theme="dark"] button *,
-html[data-theme="dark"] button span {
-  color: #fff !important;
 }
 
 /* ========================================
@@ -343,17 +320,16 @@ html[data-theme="dark"] button span {
   border-color: #444 !important;
 }
 
-/* Show code button and other toolbar buttons */
-[data-theme="dark"] [class*="Toolbar"] button,
-[data-theme="dark"] [class*="toolbar"] button,
-[data-theme="dark"] .sbdocs-preview button {
+/* Show code button and other toolbar buttons - exclude component buttons */
+[data-theme="dark"] [class*="Toolbar"] button:not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] [class*="toolbar"] button:not(.float-button):not([class*="float-button"]) {
   background-color: #333 !important;
   color: #fff !important;
   border-color: #555 !important;
 }
 
-[data-theme="dark"] [class*="Toolbar"] button:hover,
-[data-theme="dark"] [class*="toolbar"] button:hover {
+[data-theme="dark"] [class*="Toolbar"] button:not(.float-button):hover,
+[data-theme="dark"] [class*="toolbar"] button:not(.float-button):hover {
   background-color: #444 !important;
 }
 
@@ -382,26 +358,24 @@ html[data-theme="dark"] button span {
    Dark Mode for Args Table Controls
    ======================================== */
 
-/* Set boolean button */
+/* Set boolean button - only in control areas */
 [data-theme="dark"] [class*="BooleanControl"] button,
-[data-theme="dark"] [class*="booleanControl"] button,
-[data-theme="dark"] button[class*="Boolean"] {
+[data-theme="dark"] [class*="booleanControl"] button {
   background-color: #333 !important;
   color: #fff !important;
   border-color: #666 !important;
 }
 
 /* Boolean toggle - True/False text */
-[data-theme="dark"] [class*="Boolean"] span,
-[data-theme="dark"] [class*="boolean"] span {
+[data-theme="dark"] [class*="BooleanControl"] span,
+[data-theme="dark"] [class*="booleanControl"] span {
   color: #fff !important;
 }
 
-/* All control buttons in args table */
-[data-theme="dark"] .docblock-argstable button,
-[data-theme="dark"] [class*="ArgTable"] button,
-[data-theme="dark"] [class*="argsTable"] button,
-[data-theme="dark"] table button {
+/* All control buttons in args table - exclude component buttons */
+[data-theme="dark"] .docblock-argstable button:not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] [class*="ArgTable"] button:not(.float-button):not([class*="float-button"]),
+[data-theme="dark"] [class*="argsTable"] button:not(.float-button):not([class*="float-button"]) {
   background-color: #444 !important;
   color: #fff !important;
   border-color: #666 !important;
@@ -524,3 +498,203 @@ html[data-theme="dark"] button span {
   color: #fff !important;
   border-color: #5c6ac4 !important;
 }
+
+/* ========================================
+   Preserve FloatButton Component Styles
+   ========================================
+   These must come LAST to override any other button rules */
+
+button.float-button,
+.float-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  background-color: var(--bg-primary, #fff) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05) !important;
+  cursor: pointer !important;
+  position: fixed !important;
+  color: var(--text-muted, #666) !important;
+  transition: all 0.3s ease !important;
+}
+
+.float-button:hover {
+  transform: scale(1.05) !important;
+}
+
+.float-button-square {
+  border-radius: 8px !important;
+}
+
+.float-button-primary {
+  background-color: var(--primary, #4F46E5) !important;
+  color: #fff !important;
+}
+
+/* When style prop sets position: relative (for inline display in docs) */
+.float-button[style*="relative"] {
+  position: relative !important;
+}
+
+.float-button-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.float-button-badge {
+  position: absolute !important;
+  top: -4px !important;
+  right: -4px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 4px !important;
+  font-size: 12px !important;
+  line-height: 18px !important;
+  color: #fff !important;
+  background-color: #f5222d !important;
+  border-radius: 9px !important;
+  text-align: center !important;
+}
+
+/* FloatButton Group styles */
+.float-button-group {
+  position: fixed !important;
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.float-button-group-bottom-right {
+  bottom: 24px !important;
+  right: 24px !important;
+}
+
+.float-button-group-items {
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  gap: 12px !important;
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+  pointer-events: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.float-button-group-open .float-button-group-items {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+.float-button-group-items .float-button {
+  position: relative !important;
+}
+
+/* ========================================
+   Dark Mode for MDX Documentation Pages
+   ======================================== */
+
+/* MDX page wrapper */
+[data-theme="dark"] .sbdocs-wrapper,
+[data-theme="dark"] .sbdocs {
+  background-color: #1a1a1a !important;
+}
+
+/* All text in MDX docs */
+[data-theme="dark"] .sbdocs h1,
+[data-theme="dark"] .sbdocs h2,
+[data-theme="dark"] .sbdocs h3,
+[data-theme="dark"] .sbdocs h4,
+[data-theme="dark"] .sbdocs h5,
+[data-theme="dark"] .sbdocs h6 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .sbdocs p,
+[data-theme="dark"] .sbdocs li,
+[data-theme="dark"] .sbdocs span,
+[data-theme="dark"] .sbdocs strong,
+[data-theme="dark"] .sbdocs em,
+[data-theme="dark"] .sbdocs a {
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .sbdocs a {
+  color: #6ea8fe !important;
+}
+
+[data-theme="dark"] .sbdocs a:hover {
+  color: #9ec5fe !important;
+}
+
+/* Tables in dark mode */
+[data-theme="dark"] .sbdocs table {
+  border-color: #444 !important;
+}
+
+[data-theme="dark"] .sbdocs th,
+[data-theme="dark"] .sbdocs td {
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+  background-color: #2a2a2a !important;
+}
+
+[data-theme="dark"] .sbdocs th {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+/* Code blocks in dark mode - pre and code */
+[data-theme="dark"] .sbdocs pre {
+  background-color: #2d2d2d !important;
+  border: 1px solid #444 !important;
+}
+
+[data-theme="dark"] .sbdocs pre code {
+  color: #e0e0e0 !important;
+  background: transparent !important;
+}
+
+/* Inline code in dark mode */
+[data-theme="dark"] .sbdocs :not(pre) > code {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ff7b72 !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+}
+
+/* Lists */
+[data-theme="dark"] .sbdocs ul,
+[data-theme="dark"] .sbdocs ol {
+  color: #e0e0e0 !important;
+}
+
+/* Blockquotes */
+[data-theme="dark"] .sbdocs blockquote {
+  border-left-color: #555 !important;
+  color: #ccc !important;
+  background-color: #2a2a2a !important;
+}
+
+/* HR */
+[data-theme="dark"] .sbdocs hr {
+  border-color: #444 !important;
+}
+
+/* Dark mode for FloatButton */
+[data-theme="dark"] .float-button {
+  background-color: var(--bg-primary, #2a2a2a) !important;
+  color: var(--text-muted, #ccc) !important;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.2), 0 3px 6px -4px rgba(0, 0, 0, 0.24), 0 9px 28px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="dark"] .float-button-primary {
+  background-color: var(--primary, #4F46E5) !important;
+  color: #fff !important;
+}
+

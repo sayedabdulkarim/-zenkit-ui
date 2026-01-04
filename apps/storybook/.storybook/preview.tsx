@@ -8,7 +8,7 @@ import 'zenkit-css/dist/zenkit.css';
 import './storybook-overrides.css';
 
 // Global theme state to persist across remounts
-let globalTheme = 'light';
+let globalTheme = 'dark';
 
 // Helper to get theme from various possible locations
 const getThemeFromContext = (context: any): string => {
@@ -44,12 +44,12 @@ const getThemeFromContext = (context: any): string => {
       return path;
     }
   }
-  return 'light';
+  return 'dark';
 };
 
 // Theme wrapper - wraps story with data-theme attribute
 const withTheme: Decorator = (Story, context) => {
-  const theme = context.globals.theme || 'light';
+  const theme = context.globals.theme || 'dark';
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -273,7 +273,7 @@ const preview: Preview = {
     },
   },
   initialGlobals: {
-    theme: 'light',
+    theme: 'dark',
     outline: false,
   },
   decorators: [withTheme],

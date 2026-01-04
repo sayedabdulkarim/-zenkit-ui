@@ -2,6 +2,9 @@
 
 A modern React component library built on ZenKit CSS.
 
+[![npm version](https://img.shields.io/npm/v/ui_zenkit.svg)](https://www.npmjs.com/package/ui_zenkit)
+[![Storybook](https://img.shields.io/badge/Storybook-Live%20Demo-ff4785)](https://sayedabdulkarim.github.io/-zenkit-ui/)
+
 ## Features
 
 - **Zero-runtime CSS** - Built on ZenKit CSS for optimal performance
@@ -87,6 +90,10 @@ pnpm build
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
+
+## Documentation
+
+Check out our [Storybook](https://sayedabdulkarim.github.io/-zenkit-ui/) for full documentation and live examples of all 186+ components.
 
 ## License
 

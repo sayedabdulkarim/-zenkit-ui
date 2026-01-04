@@ -46,7 +46,7 @@ function App() {
 
 ## Documentation
 
-Check out our [Storybook](https://sayedabdulkarim.github.io/-zenkit-ui/) for full documentation and examples.
+Check out our [Storybook](https://sayedabdulkarim.github.io/-zenkit-ui/) for full documentation and live examples of all 186+ components.
 
 ## Repository
 

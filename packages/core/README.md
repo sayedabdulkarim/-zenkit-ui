@@ -1,15 +1,15 @@
-# @zenkit-ui/core
+# ui_zenkit
 
-Core components for ZenKit UI - A modern React component library built on ZenKit CSS.
+A modern React component library built on zenkit-css.
 
 ## Installation
 
 ```bash
-npm install @zenkit-ui/core zenkit-css
+npm install ui_zenkit zenkit-css
 # or
-pnpm add @zenkit-ui/core zenkit-css
+pnpm add ui_zenkit zenkit-css
 # or
-yarn add @zenkit-ui/core zenkit-css
+yarn add ui_zenkit zenkit-css
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ import 'zenkit-css/dist/zenkit.css';
 Then use components:
 
 ```tsx
-import { Button } from '@zenkit-ui/core';
+import { Button } from 'ui_zenkit';
 
 function App() {
   return (
@@ -36,25 +36,21 @@ function App() {
 
 ## Components
 
-- **Button** - Versatile button with variants, sizes, loading states, and icons
+186+ components including:
+- **Button** - Versatile button with variants, sizes, loading states
+- **Input** - Form input with validation states
+- **Modal** - Dialog/modal component
+- **Card** - Content container
+- **Table** - Data table component
+- And many more...
 
-More components coming soon!
+## Documentation
 
-## Props
+Check out our [Storybook](https://sayedabdulkarim.github.io/-zenkit-ui/) for full documentation and examples.
 
-### Button
+## Repository
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| variant | 'solid' \| 'outline' \| 'ghost' \| 'link' \| 'soft' | 'solid' | Button style variant |
-| colorScheme | ColorScheme | 'primary' | Color scheme |
-| size | 'sm' \| 'md' \| 'lg' | 'md' | Button size |
-| fullWidth | boolean | false | Full width button |
-| loading | boolean | false | Loading state |
-| loadingText | string | - | Text shown during loading |
-| leftIcon | ReactNode | - | Icon on the left |
-| rightIcon | ReactNode | - | Icon on the right |
-| iconOnly | boolean | false | Icon-only button |
+[GitHub](https://github.com/sayedabdulkarim/-zenkit-ui)
 
 ## License
 

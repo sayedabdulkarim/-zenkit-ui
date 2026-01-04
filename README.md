@@ -2,8 +2,6 @@
 
 A modern React component library built on ZenKit CSS.
 
-Made with love by **Sayed Abdul Karim**
-
 ## Features
 
 - **Zero-runtime CSS** - Built on ZenKit CSS for optimal performance
@@ -11,14 +9,14 @@ Made with love by **Sayed Abdul Karim**
 - **Accessible** - WCAG 2.1 AA compliant components
 - **Customizable** - CSS Variables for easy theming
 - **Tree-shakeable** - Import only what you need
-- **100+ Components** - Comprehensive component library
+- **186+ Components** - Comprehensive component library
 
 ## Installation
 
 ```bash
-npm install @zenkit-ui/core zenkit-css
+npm install ui_zenkit zenkit-css
 # or
-pnpm add @zenkit-ui/core zenkit-css
+pnpm add ui_zenkit zenkit-css
 ```
 
 ## Quick Start
@@ -28,7 +26,7 @@ pnpm add @zenkit-ui/core zenkit-css
 import 'zenkit-css/dist/zenkit.css';
 
 // Use components
-import { Button } from '@zenkit-ui/core';
+import { Button } from 'ui_zenkit';
 
 function App() {
   return (
@@ -41,7 +39,7 @@ function App() {
 
 ## Packages
 
-### @zenkit-ui/core
+### ui_zenkit
 
 Core components including:
 
@@ -96,4 +94,4 @@ MIT
 
 ---
 
-Made with love by [Sayed Abdul Karim](https://github.com/sayedabdulkarim)
+Made with ❤️ by [Sayed Abdul Karim](https://github.com/sayedabdulkarim)

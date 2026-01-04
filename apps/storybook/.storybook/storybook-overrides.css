@@ -222,17 +222,24 @@ body[data-theme="dark"] .sbdocs-wrapper button:not(.btn),
   color: #cccccc !important;
 }
 
-/* Nuclear fix - all text in docs dark mode */
-[data-theme="dark"] .sbdocs-wrapper *:not(code):not(pre):not([class*="token"]),
-[data-theme="dark"] .sbdocs-content *:not(code):not(pre):not([class*="token"]) {
+/* Nuclear fix - all text in docs dark mode (excluding component preview) */
+[data-theme="dark"] .sbdocs-wrapper > *:not(.docs-story):not([class*="Preview"]):not([class*="Canvas"]),
+[data-theme="dark"] .sbdocs-content > h1,
+[data-theme="dark"] .sbdocs-content > h2,
+[data-theme="dark"] .sbdocs-content > h3,
+[data-theme="dark"] .sbdocs-content > h4,
+[data-theme="dark"] .sbdocs-content > p,
+[data-theme="dark"] .sbdocs-content > ul,
+[data-theme="dark"] .sbdocs-content > ol,
+[data-theme="dark"] .sbdocs-content > li {
   color: #ffffff !important;
 }
 
-/* Fix MDX content specifically */
-[data-theme="dark"] .sbdocs-wrapper .sb-unstyled,
-[data-theme="dark"] .sbdocs-wrapper .sb-unstyled * {
+/* Fix MDX content specifically - but NOT component styles */
+[data-theme="dark"] .sbdocs-wrapper .sb-unstyled {
   color: #ffffff !important;
 }
+/* Don't override component internal colors */
 
 [data-theme="dark"] .docblock-argstable,
 [data-theme="dark"] .docblock-argstable-body,
